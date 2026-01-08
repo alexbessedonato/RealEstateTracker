@@ -1,13 +1,38 @@
 @import "tailwindcss";
 
 @theme {
-  /* This is where you can define your "Sophisticated" logo colors later */
+  /* Slightly warmer cream base */
+  --color-app-cream: #f7f3ed;
   --color-app-black: #0a0a0a;
+
+  /* More saturated Aura colors */
+  --color-aura-mint: rgba(
+    140,
+    235,
+    190,
+    0.7
+  ); /* Boosted opacity & saturation */
+  --color-aura-peach: rgba(255, 200, 150, 0.7); /* Warmer peach */
+  --color-aura-blue: rgba(160, 210, 255, 0.6); /* Deeper blue */
+  --color-aura-pink: rgba(240, 180, 255, 0.5); /* Added a hint of purple/pink */
 }
 
-/* Apply to the base of your site */
 html,
 body {
-  background-color: var(--color-app-black);
-  color: white; /* Makes all your text readable against the black */
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-app-cream);
+
+  /* Increased spread (70% instead of 50%) for more prominence */
+  background-image: radial-gradient(
+      at 0% 0%,
+      var(--color-aura-mint) 0px,
+      transparent 70%
+    ),
+    radial-gradient(at 100% 0%, var(--color-aura-peach) 0px, transparent 70%),
+    radial-gradient(at 100% 100%, var(--color-aura-blue) 0px, transparent 70%),
+    radial-gradient(at 50% 50%, var(--color-aura-pink) 0px, transparent 80%);
+
+  color: var(--color-app-black);
+  background-attachment: fixed; /* Keeps the gradient from scrolling with the page */
 }
