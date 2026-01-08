@@ -1,6 +1,14 @@
+
 import { Login } from "./components/Login/Login"
 import { SignUp } from "./components/SignUp/SignUp"
+import { Logout } from "./components/Logout/Logout";
+import { useStore } from "@nanostores/react";
+import { $auth } from "../../store/AuthContext";
+
 export const Header = () => {
+
+    const { user, loading } = useStore($auth);
+
     return (
         <header>
             <nav className="flex items-center justify-between p-4">
@@ -11,10 +19,17 @@ export const Header = () => {
                 <div className="flex items-center gap-2">
                     <span className="font-bold text-gray-800">Navigations</span>
                 </div>
-                <div className="flex items-center gap-4">
-                    <Login />
-                    <SignUp />
-                </div>
+
+                {loading ? (null)
+                    : user ?
+                        (<div className="flex items-center gap-4">Welcome {user.email}
+                            <Logout />
+                        </div>)
+                        :
+                        (<div className="flex items-center gap-4">
+                            <Login />
+                            <SignUp />
+                        </div>)}
             </nav>
         </header>
     )
