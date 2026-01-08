@@ -20,7 +20,7 @@ export const PropertyInfoList = () => {
 
     return (
         <div className="pt-14 w-full">
-            {/* Header Row */}
+
             <div className={`${rowStyle} font-bold text-gray-700 text-xs uppercase tracking-widest`}>
                 <p>Property Details</p>
                 <p className="text-center">Rent</p>
@@ -29,9 +29,7 @@ export const PropertyInfoList = () => {
                 <p className="text-center">Contract</p>
             </div>
 
-            {/* Data Rows */}
             {properties.map((property: Property) => (
-                // Usamos un Fragment o simplemente el div con rowStyle aquí
                 <div key={property.id} className={`${rowStyle}`}>
                     <div className="flex flex-col min-w-0">
                         <p className="font-semibold text-gray-800 truncate">{property.name || "Untitled"}</p>
@@ -47,17 +45,16 @@ export const PropertyInfoList = () => {
                         ${property.mortgage?.toLocaleString() ?? '0'}
                     </p>
 
-                    {/* Botones de acción para las URLs en lugar de texto plano */}
                     <div className="flex justify-center">
                         {property.insurance_url ? (
-                            <a href={property.insurance_url} target="_blank" className="text-blue-500 hover:underline text-xs font-bold">VIEW</a>
-                        ) : <span className="text-gray-300">-</span>}
+                            <a href={property.insurance_url} target="_blank" className="text-blue-500 hover:underline text-xs font-bold">VIEW INSURANCE</a>
+                        ) : <span className="text-blue-500">Upload Insurance</span>}
                     </div>
 
                     <div className="flex justify-center">
                         {property.contract_url ? (
-                            <a href={property.contract_url} target="_blank" className="text-blue-500 hover:underline text-xs font-bold">DOCS</a>
-                        ) : <span className="text-gray-300">-</span>}
+                            <a href={property.contract_url} target="_blank" className="text-blue-500 hover:underline text-xs font-bold">VIEW CONTRACT</a>
+                        ) : <span className="text-blue-500">Upload Contract</span>}
                     </div>
                 </div>
             ))}

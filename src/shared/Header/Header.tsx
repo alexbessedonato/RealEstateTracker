@@ -22,7 +22,7 @@ export const Header = () => {
 
                 {loading ? (null)
                     : user ?
-                        (<div className="flex items-center gap-4">Welcome {user.email}
+                        (<div className="flex items-center gap-4 font-bold">Welcome, {user.user_metadata?.display_name ?? user.email}
                             <Logout />
                         </div>)
                         :
