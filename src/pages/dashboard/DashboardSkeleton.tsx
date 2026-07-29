@@ -9,8 +9,10 @@ export const DashboardSkeleton = () => {
         <Skeleton className="h-20 w-full rounded-xl bg-gray-200" />
         <Skeleton className="h-20 w-full rounded-xl bg-gray-200" />
       </div>
-      <Skeleton className="h-32 w-full rounded-xl bg-gray-200" />
-      <Skeleton className="h-32 w-full rounded-xl bg-gray-200" />
+      <div className="flex flex-col gap-4 md:flex-row">
+        <Skeleton className="h-32 min-w-0 flex-1 rounded-xl bg-gray-200" />
+        <Skeleton className="h-32 min-w-0 flex-1 rounded-xl bg-gray-200" />
+      </div>
     </section>
   );
 };

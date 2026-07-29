@@ -23,11 +23,17 @@ export const Dashboard = () => {
   ) return <DashboardSkeleton />
 
   return (
-    <section className="flex flex-col gap-8">
+    <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
       <PropertiesList />
       <FinancialsCardSet />
-      <ManagersList />
-      <TenantsList />
+      <div className="flex flex-col gap-4 md:flex-row">
+        <div className="min-w-0 flex-1">
+          <TenantsList />
+        </div>
+        <div className="min-w-0 flex-1">
+          <ManagersList />
+        </div>
+      </div>
     </section>
   );
 };

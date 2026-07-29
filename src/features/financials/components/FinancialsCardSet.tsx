@@ -12,14 +12,14 @@ export const FinancialsCardSet = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-3 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
       {cards.map((card) => (
         <Card key={card.title} className="w-full">
           <CardHeader>
-            <CardTitle>{card.title}</CardTitle>
+            <CardTitle className="text-2xl">{card.title}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className={cn("text-2xl font-semibold", card.format ? card.format : "text-blue-950")}>{card.value}</p>
+            <p className={cn("text-3xl font-semibold", card.format ? card.format : "text-blue-950")}>{card.value}</p>
           </CardContent>
         </Card>
       ))}

@@ -24,8 +24,7 @@ export const PropertiesList = () => {
     const navigateToEditProperty = (property: PropertyForTable) => navigate({ to: "/edit-property/$propertyId", params: { propertyId: property.id }});
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <Card className="w-full">
+        <Card className="w-full">
                 <CardHeader>
                     <div className="flex justify-between items-center">
                         <div>
@@ -64,19 +63,24 @@ export const PropertiesList = () => {
                                 </TableHeader>
                                 <TableBody className="text-blue-950">
                                     {properties.map((property) => (
-                                        <TableRow key={property.name} onClick={() => navigateToEditProperty(property)}>
+                                        <TableRow key={property.name} onClick={() => {
+                                            const selection = window.getSelection();
+                                            if (selection && selection.toString().length > 0) return
+                                            navigateToEditProperty(property)}
+                                        }
+                                        >
                                             <TableCell className="text-center">
                                                 <div className="flex flex-col items-center leading-tight">
                                                     <span>{property.name}</span>
                                                     {property.address ? (
-                                                        <span className="mt-1 text-xs italic text-[#1f3a8a]">{property.address}</span>
+                                                        <span className="mt-1 text-xs italic text-blue-800">{property.address}</span>
                                                     ) : null}
                                                 </div>
                                             </TableCell>
                                             <TableCell className="text-center">{property.tenants?.[0]?.full_name ?? t("common.notAssigned")}</TableCell>
                                             <TableCell className="text-center">{property.manager?.name ?? t("common.notAssigned")}</TableCell>
-                                            <TableCell className="text-center">{property.rent}€</TableCell>
-                                            <TableCell className="text-center">{property.mortgage}€</TableCell>
+                                            <TableCell className="text-center text-green-700">{property.rent}€</TableCell>
+                                            <TableCell className="text-center text-red-800">{property.mortgage}€</TableCell>
                                             <TableCell className="text-center">
                                                 {property.insurance_url ? (
                                                     <Button
@@ -123,6 +127,5 @@ export const PropertiesList = () => {
                     </CardContent>
                 )}
             </Card>
-        </div>
     )
 }

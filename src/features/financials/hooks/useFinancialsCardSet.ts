@@ -9,16 +9,19 @@ export const useFinancialsCardSet = () => {
     {
       title: t("financials.totalRent"),
       value: `${financials?.total_rent ?? 0} €`,
+      format: "text-green-700"
+
     },
     {
       title: t("financials.totalMortgage"),
       value: `${financials?.total_mortgage ?? 0} €`,
+      format: "text-red-800"
+
     },
     {
       title: t("financials.netIncome"),
       value: `${financials?.net_profit ?? 0} €`,
-      format: "text-green-600"
-
+      format: "text-blue-900"
     },
   ];
 
