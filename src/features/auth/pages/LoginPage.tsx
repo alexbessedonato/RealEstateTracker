@@ -1,5 +1,6 @@
 import { useForm } from "@tanstack/react-form";
 import { useNavigate } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -15,6 +16,7 @@ import { useDismissDialog } from "@/hooks/useDismissDialog";
 import { useLoginMutation } from "../hooks/mutations";
 
 export function LoginPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dismissDialog = useDismissDialog("/");
   const navigateToDashboard = () => navigate({ to: "/dashboard", replace: true});
@@ -36,9 +38,9 @@ export function LoginPage() {
     <Dialog open={true} onOpenChange={(open) => !open && dismissDialog()}>
       <DialogContent className="sm:max-w-sm backdrop-blur-md bg-white/90">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center">Login</DialogTitle>
+          <DialogTitle className="text-2xl font-bold text-center">{t('auth.login.title')}</DialogTitle>
           <DialogDescription className="text-center">
-            Introduce tus datos para entrar.
+            {t('auth.login.description')}
           </DialogDescription>
         </DialogHeader>
 
@@ -54,17 +56,17 @@ export function LoginPage() {
             name="email"
             validators={{
               onChange: ({ value }) =>
-                !value.includes("@") ? "Email inválido" : undefined,
+                !value.includes("@") ? t('common.validation.emailInvalid') : undefined,
             }}
             children={(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t('common.email')}</FieldLabel>
                 <Input
                   id={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="ejemplo@correo.com"
+                  placeholder={t('common.placeholders.email')}
                 />
                 {field.state.meta.errors.length > 0 && (
                   <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
@@ -77,11 +79,11 @@ export function LoginPage() {
             name="password"
             validators={{
               onChange: ({ value }) =>
-                value.length < 6 ? "Mínimo 6 caracteres" : undefined,
+                value.length < 6 ? t('common.validation.minPassword') : undefined,
             }}
             children={(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Contraseña</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t('auth.login.passwordLabel')}</FieldLabel>
                 <Input
                   id={field.name}
                   type="password"
@@ -103,8 +105,8 @@ export function LoginPage() {
               disabled={form.state.isSubmitting || login.isPending}
             >
               {form.state.isSubmitting || login.isPending
-                ? "Entrando..."
-                : "Iniciar Sesión"}
+                ? t('auth.login.submitting')
+                : t('auth.login.submit')}
             </Button>
           </DialogFooter>
         </form>
@@ -115,7 +117,7 @@ export function LoginPage() {
               onClick={navigateToPasswordReset}
               
             >
-              Forgot Password?
+              {t('auth.login.forgotPassword')}
             </Button>
       </DialogContent>
     </Dialog>

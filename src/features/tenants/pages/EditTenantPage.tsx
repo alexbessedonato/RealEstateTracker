@@ -28,8 +28,10 @@ import {
   useEditTenantMutation,
   useTenantsQuery,
 } from "../hooks/queries";
+import { useTranslation } from "react-i18next";
 
 export const EditTenantPage = () => {
+  const { t } = useTranslation();
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const navigate = useNavigate();
@@ -38,7 +40,7 @@ export const EditTenantPage = () => {
   const { tenantId } = editTenantRoute.useParams();
   const { data: tenants = [] } = useTenantsQuery();
   const { data: properties = [] } = usePropertiesQuery();
-  const tenant = tenants.find((t) => t.id === tenantId);
+  const tenant = tenants.find((item) => item.id === tenantId);
   const editTenant = useEditTenantMutation();
   const deleteTenant = useDeleteTenantMutation();
 
@@ -72,10 +74,10 @@ export const EditTenantPage = () => {
         <DialogContent className="sm:max-w-sm backdrop-blur-md bg-white/90">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-center">
-              Edit Tenant
+              {t("tenants.edit.title")}
             </DialogTitle>
             <DialogDescription className="text-center">
-              Introduce los datos del inquilino a editar.
+              {t("tenants.edit.description")}
             </DialogDescription>
           </DialogHeader>
 
@@ -90,13 +92,13 @@ export const EditTenantPage = () => {
             <form.Field name="full_name">
               {(field) => (
                 <Field>
-                  <FieldLabel htmlFor={field.name}>Nombre</FieldLabel>
+                  <FieldLabel htmlFor={field.name}>{t("tenants.form.nameLabel")}</FieldLabel>
                   <Input
                     id={field.name}
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    placeholder="nombre del inquilino"
+                    placeholder={t("tenants.form.namePlaceholder")}
                   />
                 </Field>
               )}
@@ -106,18 +108,18 @@ export const EditTenantPage = () => {
               name="email"
               validators={{
                 onChange: ({ value }) =>
-                  value && !value.includes("@") ? "Email inválido" : undefined,
+                  value && !value.includes("@") ? t("common.validation.emailInvalid") : undefined,
               }}
             >
               {(field) => (
                 <Field>
-                  <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                  <FieldLabel htmlFor={field.name}>{t("common.email")}</FieldLabel>
                   <Input
                     id={field.name}
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    placeholder="ejemplo@correo.com"
+                    placeholder={t("common.placeholders.email")}
                   />
                   {field.state.meta.errors.length > 0 && (
                     <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
@@ -133,21 +135,21 @@ export const EditTenantPage = () => {
                   if (!value) return undefined;
                   const isValid = /^\+?\d{9,15}$/.test(value);
                   return !isValid
-                    ? "Teléfono inválido (ej: +34600123456 o 600123456)"
+                    ? t("common.validation.phoneInvalid")
                     : undefined;
                 },
               }}
             >
               {(field) => (
                 <Field>
-                  <FieldLabel htmlFor={field.name}>Teléfono</FieldLabel>
+                  <FieldLabel htmlFor={field.name}>{t("common.phone")}</FieldLabel>
                   <Input
                     id={field.name}
                     type="tel"
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    placeholder="número de teléfono"
+                    placeholder={t("common.placeholders.phone")}
                   />
                   {field.state.meta.errors.length > 0 && (
                     <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
@@ -159,16 +161,16 @@ export const EditTenantPage = () => {
             <form.Field name="property_id">
               {(field) => (
                 <Field>
-                  <FieldLabel htmlFor={field.name}>Propiedad (Opcional)</FieldLabel>
+                  <FieldLabel htmlFor={field.name}>{t("tenants.form.propertyLabel")}</FieldLabel>
                   <Select
                     value={field.state.value}
                     onValueChange={field.handleChange}
                   >
                     <SelectTrigger id={field.name}>
-                      <SelectValue placeholder="Selecciona una propiedad" />
+                      <SelectValue placeholder={t("tenants.form.propertyPlaceholder")} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="none">Sin propiedad</SelectItem>
+                      <SelectItem value="none">{t("tenants.form.noProperty")}</SelectItem>
 
                       {properties.map((property) => (
                         <SelectItem key={property.id} value={property.id}>
@@ -189,8 +191,8 @@ export const EditTenantPage = () => {
                 disabled={form.state.isSubmitting || editTenant.isPending}
               >
                 {form.state.isSubmitting || editTenant.isPending
-                  ? "Guardando..."
-                  : "Guardar cambios"}
+                  ? t("common.saving")
+                  : t("common.saveChanges")}
               </Button>
             </DialogFooter>
 
@@ -202,7 +204,7 @@ export const EditTenantPage = () => {
                 onClick={() => setShowDeleteDialog(true)}
                 disabled={editTenant.isPending}
               >
-                Eliminar Inquilino
+                {t("tenants.edit.delete")}
               </Button>
             </DialogFooter>
           </form>
@@ -215,12 +217,8 @@ export const EditTenantPage = () => {
           if (!deleteTenant.isPending) setShowDeleteDialog(open);
         }}
         isPending={deleteTenant.isPending}
-        title="Eliminar Inquilino"
-        description={`¿Estás seguro de querer eliminar a "${tenant?.full_name}"?${
-          tenant?.property?.name
-            ? ` Se desvinculará de la propiedad "${tenant.property.name}".`
-            : ""
-        }`}
+        title={t("tenants.edit.deleteDialogTitle")}
+        description={`${t("tenants.edit.deleteConfirm", { name: tenant?.full_name })}${tenant?.property?.name ? t("tenants.edit.deleteConfirmUnlink", { property: tenant.property.name }) : ""}`}
         onConfirm={async () => {
           await deleteTenant.mutateAsync(tenantId);
           navigateToDashboard();

@@ -20,8 +20,10 @@ import {
   useEditManagerMutation,
   useManagersQuery,
 } from "../hooks/queries";
+import { useTranslation } from "react-i18next";
 
 export const EditManagerPage = () => {
+  const { t } = useTranslation();
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const navigate = useNavigate();
@@ -60,10 +62,10 @@ export const EditManagerPage = () => {
         <DialogContent className="sm:max-w-sm backdrop-blur-md bg-white/90">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-center">
-              Edit Manager
+              {t("managers.edit.title")}
             </DialogTitle>
             <DialogDescription className="text-center">
-              Introduce los datos del manager a editar.
+              {t("managers.edit.description")}
             </DialogDescription>
           </DialogHeader>
 
@@ -78,13 +80,13 @@ export const EditManagerPage = () => {
             <form.Field name="name">
               {(field) => (
                 <Field>
-                  <FieldLabel htmlFor={field.name}>Nombre</FieldLabel>
+                  <FieldLabel htmlFor={field.name}>{t("managers.form.nameLabel")}</FieldLabel>
                   <Input
                     id={field.name}
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    placeholder="nombre del manager"
+                    placeholder={t("managers.form.namePlaceholder")}
                   />
                 </Field>
               )}
@@ -93,13 +95,13 @@ export const EditManagerPage = () => {
             <form.Field name="company">
               {(field) => (
                 <Field>
-                  <FieldLabel htmlFor={field.name}>Empresa</FieldLabel>
+                  <FieldLabel htmlFor={field.name}>{t("managers.form.companyLabel")}</FieldLabel>
                   <Input
                     id={field.name}
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    placeholder="nombre de la empresa"
+                    placeholder={t("managers.form.companyPlaceholder")}
                   />
                 </Field>
               )}
@@ -109,18 +111,18 @@ export const EditManagerPage = () => {
               name="email"
               validators={{
                 onChange: ({ value }) =>
-                  value && !value.includes("@") ? "Email inválido" : undefined,
+                  value && !value.includes("@") ? t("common.validation.emailInvalid") : undefined,
               }}
             >
               {(field) => (
                 <Field>
-                  <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                  <FieldLabel htmlFor={field.name}>{t("common.email")}</FieldLabel>
                   <Input
                     id={field.name}
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    placeholder="correo electrónico"
+                    placeholder={t("managers.form.emailPlaceholder")}
                   />
                   {field.state.meta.errors.length > 0 && (
                     <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
@@ -136,21 +138,21 @@ export const EditManagerPage = () => {
                   if (!value) return undefined;
                   const isValid = /^\+?\d{9,15}$/.test(value);
                   return !isValid
-                    ? "Teléfono inválido (ej: +34600123456 o 600123456)"
+                    ? t("common.validation.phoneInvalid")
                     : undefined;
                 },
               }}
             >
               {(field) => (
                 <Field>
-                  <FieldLabel htmlFor={field.name}>Teléfono</FieldLabel>
+                  <FieldLabel htmlFor={field.name}>{t("common.phone")}</FieldLabel>
                   <Input
                     id={field.name}
                     type="tel"
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    placeholder="número de teléfono"
+                    placeholder={t("common.placeholders.phone")}
                   />
                   {field.state.meta.errors.length > 0 && (
                     <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
@@ -166,8 +168,8 @@ export const EditManagerPage = () => {
                 disabled={form.state.isSubmitting || editManager.isPending}
               >
                 {form.state.isSubmitting || editManager.isPending
-                  ? "Guardando..."
-                  : "Guardar cambios"}
+                  ? t("common.saving")
+                  : t("common.saveChanges")}
               </Button>
             </DialogFooter>
 
@@ -179,7 +181,7 @@ export const EditManagerPage = () => {
                 onClick={() => setShowDeleteDialog(true)}
                 disabled={editManager.isPending}
               >
-                Eliminar Manager
+                {t("managers.edit.delete")}
               </Button>
             </DialogFooter>
           </form>
@@ -192,8 +194,8 @@ export const EditManagerPage = () => {
           if (!deleteManager.isPending) setShowDeleteDialog(open);
         }}
         isPending={deleteManager.isPending}
-        title="Eliminar Manager"
-        description={`¿Estás seguro de querer eliminar a "${manager?.name}"? Las propiedades asignadas quedarán sin manager.`}
+        title={t("managers.edit.deleteDialogTitle")}
+        description={t("managers.edit.deleteConfirm", { name: manager?.name })}
         onConfirm={async () => {
           await deleteManager.mutateAsync(managerId);
           navigateToDashboard();

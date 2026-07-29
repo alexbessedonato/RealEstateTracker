@@ -1,4 +1,5 @@
 import { useForm } from "@tanstack/react-form";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -15,6 +16,7 @@ import { usePasswordResetMutation } from "../hooks/mutations";
 import { useNavigate } from "@tanstack/react-router";
 
 export function PasswordResetPage() {
+  const { t } = useTranslation();
   const dismissDialog = useDismissDialog("/");
   const navigate = useNavigate()
   const navigateToLanding = () => navigate({ to: "/"})
@@ -35,11 +37,10 @@ export function PasswordResetPage() {
       <DialogContent className="sm:max-w-sm backdrop-blur-md bg-white/90">
         <DialogHeader>
           <DialogTitle className="mt-8 text-2xl font-bold text-center">
-            Restablecer Contraseña
+            {t('auth.passwordReset.title')}
           </DialogTitle>
           <DialogDescription className="text-center">
-            Introduce tu email y te enviaremos un enlace para restablecer tu
-            contraseña.
+            {t('auth.passwordReset.description')}
           </DialogDescription>
         </DialogHeader>
 
@@ -55,18 +56,18 @@ export function PasswordResetPage() {
             name="email"
             validators={{
               onChange: ({ value }) =>
-                !value.includes("@") ? "Email inválido" : undefined,
+                !value.includes("@") ? t('common.validation.emailInvalid') : undefined,
             }}
             children={(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t('common.email')}</FieldLabel>
                 <Input
                   id={field.name}
                   type="email"
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="ejemplo@correo.com"
+                  placeholder={t('common.placeholders.email')}
                 />
                 {field.state.meta.errors.length > 0 && (
                   <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
@@ -81,7 +82,7 @@ export function PasswordResetPage() {
               className="w-full"
               disabled={form.state.isSubmitting}
             >
-              {form.state.isSubmitting ? "Enviando..." : "Enviar enlace"}
+              {form.state.isSubmitting ? t('auth.passwordReset.submitting') : t('auth.passwordReset.submit')}
             </Button>
           </DialogFooter>
         </form>

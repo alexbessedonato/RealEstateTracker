@@ -1,0 +1,353 @@
+{
+  "meta": {
+    "title": "Rentaly - Verwalten Sie Ihre Mietimmobilien",
+    "description": "Dashboard für unabhängige Vermieter. Verwalten Sie Ihre Immobilien, Mieter und Verträge an einem Ort.",
+    "ogTitle": "Rentaly",
+    "ogDescription": "Dashboard für unabhängige Vermieter. Verwalten Sie Ihre Immobilien, Mieter und Verträge an einem Ort."
+  },
+  "common": {
+    "loading": "Laden",
+    "loadingEllipsis": "Laden...",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "deleting": "Löschen...",
+    "close": "Schließen",
+    "unexpectedError": "Unerwarteter Fehler",
+    "notAssigned": "Nicht zugewiesen",
+    "empty": "-",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "name": "Name",
+    "saving": "Speichern...",
+    "saveChanges": "Änderungen speichern",
+    "adding": "Hinzufügen...",
+    "placeholders": {
+      "email": "beispiel@email.com",
+      "phone": "Telefonnummer"
+    },
+    "validation": {
+      "emailInvalid": "Ungültige E-Mail",
+      "minPassword": "Mindestens 6 Zeichen",
+      "passwordMismatch": "Passwörter stimmen nicht überein",
+      "phoneInvalid": "Ungültige Telefonnummer (z. B. +34600123456 oder 600123456)"
+    }
+  },
+  "layout": {
+    "logoAlt": "Rentaly-Logo",
+    "searchPlaceholder": "Immobilie suchen",
+    "nav": {
+      "login": "Anmelden",
+      "signUp": "Registrieren",
+      "logout": "Abmelden",
+      "loggingOut": "Abmelden..."
+    }
+  },
+  "landing": {
+    "hero": {
+      "badge": "Immobilienverwaltung, vereinfacht",
+      "title": "Ihr gesamtes Portfolio,",
+      "titleAccent": "klar organisiert",
+      "subtitle": "Rentaly vereint Immobilien, Mieter, Verwalter und Finanzen in einem Dashboard — damit Sie stets wissen, was Sie besitzen, wer mietet und wie viel Sie verdienen.",
+      "ctaPrimary": "Kostenlos starten",
+      "ctaSecondary": "Anmelden",
+      "highlights": {
+        "rentTracking": "Miet- und Hypothekenübersicht",
+        "documents": "Sichere Dokumentenspeicherung",
+        "people": "Mieter und Verwalter an einem Ort"
+      }
+    },
+    "features": {
+      "title": "Alles, was Sie für Ihr Portfolio brauchen",
+      "subtitle": "Ein fokussiertes Toolkit für unabhängige Vermieter und kleine Portfolios — ohne die Komplexität von Unternehmenssoftware.",
+      "items": {
+        "financials": {
+          "title": "Finanzübersicht",
+          "description": "Gesamtmiete, Gesamthypothek und Nettoeinkommen werden automatisch für alle Immobilien berechnet."
+        },
+        "properties": {
+          "title": "Immobilien",
+          "description": "Erfassen Sie Namen, Adressen, Miete und Hypothek für jede Immobilie, die Sie besitzen."
+        },
+        "documents": {
+          "title": "Dokumentenspeicher",
+          "description": "Bewahren Sie Versicherungspolicen und Verträge pro Immobilie auf — geschützt über signierte Links."
+        },
+        "tenants": {
+          "title": "Mieter",
+          "description": "Speichern Sie Mieterdaten und verknüpfen Sie sie direkt mit den gemieteten Immobilien."
+        },
+        "managers": {
+          "title": "Verwalter",
+          "description": "Weisen Sie Immobilienverwalter mit Firmen- und Kontaktdaten für schnellen Zugriff zu."
+        }
+      }
+    },
+    "howItWorks": {
+      "title": "In drei Schritten startklar",
+      "subtitle": "Kein aufwendiges Setup — fügen Sie einfach hinzu, was Sie besitzen, und lassen Sie das Dashboard rechnen.",
+      "steps": {
+        "addProperties": {
+          "title": "Immobilien hinzufügen",
+          "description": "Erfassen Sie jede Immobilie mit Miete, Hypothek und Adresse und hängen Sie Versicherungs- und Vertragsdokumente an."
+        },
+        "linkPeople": {
+          "title": "Mieter und Verwalter verknüpfen",
+          "description": "Weisen Sie Mieter den gemieteten Immobilien zu und verbinden Sie die zuständigen Verwalter."
+        },
+        "trackFinances": {
+          "title": "Finanzen im Blick behalten",
+          "description": "Ihr Dashboard fasst alles zu Gesamtmiete, Hypothek und Nettoeinkommen auf einen Blick zusammen."
+        }
+      }
+    },
+    "cta": {
+      "title": "Bereit, die Kontrolle über Ihre Immobilien zu übernehmen?",
+      "subtitle": "Erstellen Sie Ihr Konto und verschaffen Sie sich noch heute einen klareren Überblick über Ihr Immobilienportfolio.",
+      "primary": "Konto erstellen",
+      "secondary": "Anmelden",
+      "footnote": "Keine Kreditkarte erforderlich."
+    },
+    "footer": {
+      "brand": "Rentaly",
+      "copyright": "© {{year}} Rentaly. Alle Rechte vorbehalten."
+    },
+    "preview": {
+      "summary": {
+        "totalRent": "Gesamtmiete",
+        "totalMortgage": "Gesamthypothek",
+        "netIncome": "Nettoeinkommen"
+      },
+      "properties": {
+        "title": "Immobilien",
+        "action": "Immobilie hinzufügen",
+        "columns": {
+          "property": "Immobilie",
+          "tenant": "Mieter",
+          "rent": "Miete",
+          "mortgage": "Hypothek",
+          "docs": "Docs"
+        }
+      },
+      "managers": {
+        "title": "Verwalter",
+        "action": "Verwalter hinzufügen",
+        "columns": {
+          "name": "Name",
+          "company": "Unternehmen",
+          "email": "E-Mail",
+          "phone": "Telefon"
+        }
+      },
+      "tenants": {
+        "title": "Mieter",
+        "action": "Mieter hinzufügen",
+        "columns": {
+          "name": "Name",
+          "property": "Immobilie",
+          "email": "E-Mail",
+          "phone": "Telefon"
+        }
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Anmelden",
+      "description": "Geben Sie Ihre Daten ein, um sich anzumelden.",
+      "passwordLabel": "Passwort",
+      "submitting": "Anmeldung...",
+      "submit": "Anmelden",
+      "forgotPassword": "Passwort vergessen?"
+    },
+    "signUp": {
+      "title": "Konto erstellen",
+      "description": "Registrieren Sie sich, um Ihre Immobilien zu verwalten.",
+      "fullNameLabel": "Vollständiger Name",
+      "passwordLabel": "Passwort",
+      "confirmPasswordLabel": "Passwort bestätigen",
+      "submitting": "Konto wird erstellt...",
+      "submit": "Registrieren",
+      "placeholders": {
+        "fullName": "Max Mustermann",
+        "email": "sie@email.com"
+      },
+      "validation": {
+        "fullNameRequired": "Name ist erforderlich"
+      }
+    },
+    "passwordReset": {
+      "title": "Passwort zurücksetzen",
+      "description": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts.",
+      "submitting": "Senden...",
+      "submit": "Link senden"
+    },
+    "newPassword": {
+      "title": "Neues Passwort",
+      "description": "Geben Sie Ihr neues Passwort ein.",
+      "passwordLabel": "Neues Passwort",
+      "confirmPasswordLabel": "Passwort bestätigen",
+      "submit": "Passwort speichern"
+    },
+    "toasts": {
+      "loginSuccess": "Erfolgreich angemeldet",
+      "loginError": "Fehler bei der Anmeldung",
+      "signUpSuccess": "Konto erfolgreich erstellt.",
+      "signUpError": "Fehler beim Erstellen des Kontos",
+      "logoutSuccess": "Erfolgreich abgemeldet",
+      "logoutError": "Fehler bei der Abmeldung",
+      "passwordResetSuccess": "E-Mail zum Zurücksetzen gesendet, prüfen Sie Ihren Posteingang",
+      "passwordResetError": "Fehler beim Zurücksetzen des Passworts",
+      "passwordUpdateSuccess": "Passwort erfolgreich aktualisiert",
+      "passwordUpdateError": "Fehler beim Aktualisieren des Passworts"
+    }
+  },
+  "properties": {
+    "list": {
+      "title": "Immobilien",
+      "updatedOn": "aktualisiert um: {{time}}",
+      "add": "Immobilie hinzufügen",
+      "emptyTitle": "Keine Immobilien gefunden",
+      "emptyDescription": "Beginnen Sie mit dem Hinzufügen einer neuen Immobilie.",
+      "viewInsurance": "Versicherung anzeigen",
+      "noInsurance": "Keine Versicherung zugewiesen",
+      "viewContract": "Vertrag anzeigen",
+      "noContract": "Kein Vertrag zugewiesen",
+      "columns": {
+        "property": "IMMOBILIE",
+        "tenant": "MIETER",
+        "manager": "VERWALTER",
+        "rent": "MIETE",
+        "mortgage": "HYPOTHEK",
+        "insurance": "VERSICHERUNG",
+        "contract": "VERTRAG"
+      }
+    },
+    "add": {
+      "title": "Immobilie hinzufügen",
+      "description": "Geben Sie die Details der neuen Immobilie ein.",
+      "submit": "Immobilie hinzufügen"
+    },
+    "edit": {
+      "title": "Immobilie bearbeiten",
+      "description": "Aktualisieren Sie die Immobiliendetails.",
+      "delete": "Immobilie löschen",
+      "deleteDialogTitle": "Immobilie löschen",
+      "deleteConfirm": "Sind Sie sicher, dass Sie diese Immobilie löschen möchten?"
+    },
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Name der Immobilie",
+      "addressLabel": "Adresse",
+      "addressPlaceholder": "Adresse der Immobilie",
+      "rentLabel": "Miete",
+      "rentPlaceholder": "Miete",
+      "mortgageLabel": "Hypothek",
+      "mortgagePlaceholder": "Hypothek",
+      "insuranceLabel": "Versicherungspolice (PDF oder Bild)",
+      "contractLabel": "Mietvertrag (PDF oder Bild)",
+      "fileSelected": "Ausgewählt: {{fileName}}",
+      "keepCurrentFile": "Leer lassen, um die aktuelle Datei beizubehalten.",
+      "managerLabel": "Verwalter (optional)",
+      "managerPlaceholder": "Verwalter auswählen",
+      "noManager": "Kein Verwalter"
+    },
+    "toasts": {
+      "deleteSuccess": "Immobilie erfolgreich gelöscht",
+      "deleteError": "Fehler beim Löschen der Immobilie",
+      "updateSuccess": "Immobilie erfolgreich aktualisiert",
+      "updateError": "Fehler beim Aktualisieren der Immobilie",
+      "addSuccess": "Immobilie erfolgreich hinzugefügt",
+      "addError": "Fehler beim Hinzufügen der Immobilie",
+      "signedUrlError": "Fehler beim Abrufen der signierten URL"
+    }
+  },
+  "tenants": {
+    "list": {
+      "title": "Mieter",
+      "add": "Mieter hinzufügen",
+      "emptyTitle": "Keine Mieter gefunden",
+      "emptyDescription": "Beginnen Sie mit dem Hinzufügen eines neuen Mieters.",
+      "columns": {
+        "name": "NAME",
+        "property": "IMMOBILIE",
+        "email": "E-MAIL",
+        "phone": "TELEFON"
+      }
+    },
+    "add": {
+      "title": "Mieter hinzufügen",
+      "description": "Geben Sie die Details des neuen Mieters ein.",
+      "submit": "Mieter hinzufügen"
+    },
+    "edit": {
+      "title": "Mieter bearbeiten",
+      "description": "Aktualisieren Sie die Mieterdetails.",
+      "delete": "Mieter löschen",
+      "deleteDialogTitle": "Mieter löschen",
+      "deleteConfirm": "Sind Sie sicher, dass Sie „{{name}}“ löschen möchten?",
+      "deleteConfirmUnlink": " Die Verknüpfung mit der Immobilie „{{property}}“ wird aufgehoben."
+    },
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Name des Mieters",
+      "propertyLabel": "Immobilie (optional)",
+      "propertyPlaceholder": "Immobilie auswählen",
+      "noProperty": "Keine Immobilie"
+    },
+    "toasts": {
+      "addSuccess": "Mieter erfolgreich hinzugefügt",
+      "addError": "Fehler beim Hinzufügen des Mieters",
+      "updateSuccess": "Mieter erfolgreich aktualisiert",
+      "updateError": "Fehler beim Aktualisieren des Mieters",
+      "deleteSuccess": "Mieter erfolgreich gelöscht",
+      "deleteError": "Fehler beim Löschen des Mieters"
+    }
+  },
+  "managers": {
+    "list": {
+      "title": "Verwalter",
+      "add": "Verwalter hinzufügen",
+      "emptyTitle": "Keine Verwalter gefunden",
+      "emptyDescription": "Beginnen Sie mit dem Hinzufügen eines neuen Verwalters.",
+      "columns": {
+        "name": "NAME",
+        "company": "UNTERNEHMEN",
+        "email": "E-MAIL",
+        "phone": "TELEFON"
+      }
+    },
+    "add": {
+      "title": "Verwalter hinzufügen",
+      "description": "Geben Sie die Details des neuen Verwalters ein.",
+      "submit": "Verwalter hinzufügen"
+    },
+    "edit": {
+      "title": "Verwalter bearbeiten",
+      "description": "Aktualisieren Sie die Verwalterdetails.",
+      "delete": "Verwalter löschen",
+      "deleteDialogTitle": "Verwalter löschen",
+      "deleteConfirm": "Sind Sie sicher, dass Sie „{{name}}“ löschen möchten? Zugewiesene Immobilien bleiben ohne Verwalter."
+    },
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "Name des Verwalters",
+      "companyLabel": "Unternehmen",
+      "companyPlaceholder": "Firmenname",
+      "emailPlaceholder": "E-Mail-Adresse"
+    },
+    "toasts": {
+      "addSuccess": "Verwalter erfolgreich hinzugefügt",
+      "addError": "Fehler beim Hinzufügen des Verwalters",
+      "updateSuccess": "Verwalter erfolgreich aktualisiert",
+      "updateError": "Fehler beim Aktualisieren des Verwalters",
+      "deleteSuccess": "Verwalter erfolgreich gelöscht",
+      "deleteError": "Fehler beim Löschen des Verwalters"
+    }
+  },
+  "financials": {
+    "totalRent": "Gesamtmiete",
+    "totalMortgage": "Gesamthypothek",
+    "netIncome": "Nettoeinkommen",
+    "loadError": "Fehler beim Laden der Finanzdaten."
+  }
+}

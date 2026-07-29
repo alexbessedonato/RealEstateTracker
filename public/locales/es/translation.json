@@ -1,0 +1,353 @@
+{
+  "meta": {
+    "title": "Rentaly - Gestiona tus propiedades de alquiler",
+    "description": "Dashboard para landlords independientes. Gestiona tus propiedades, inquilinos y contratos en un solo lugar.",
+    "ogTitle": "Rentaly",
+    "ogDescription": "Dashboard para landlords independientes. Gestiona tus propiedades, inquilinos y contratos en un solo lugar."
+  },
+  "common": {
+    "loading": "Cargando",
+    "loadingEllipsis": "Cargando...",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "deleting": "Eliminando...",
+    "close": "Cerrar",
+    "unexpectedError": "Error inesperado",
+    "notAssigned": "Sin asignar",
+    "empty": "-",
+    "email": "Email",
+    "phone": "Teléfono",
+    "name": "Nombre",
+    "saving": "Guardando...",
+    "saveChanges": "Guardar cambios",
+    "adding": "Añadiendo...",
+    "placeholders": {
+      "email": "ejemplo@correo.com",
+      "phone": "número de teléfono"
+    },
+    "validation": {
+      "emailInvalid": "Email inválido",
+      "minPassword": "Mínimo 6 caracteres",
+      "passwordMismatch": "Las contraseñas no coinciden",
+      "phoneInvalid": "Teléfono inválido (ej: +34600123456 o 600123456)"
+    }
+  },
+  "layout": {
+    "logoAlt": "Logo de Rentaly",
+    "searchPlaceholder": "Buscar propiedad",
+    "nav": {
+      "login": "Iniciar sesión",
+      "signUp": "Registrarse",
+      "logout": "Cerrar sesión",
+      "loggingOut": "Cerrando sesión..."
+    }
+  },
+  "landing": {
+    "hero": {
+      "badge": "Gestión de propiedades, simplificada",
+      "title": "Todo tu portfolio,",
+      "titleAccent": "claramente organizado",
+      "subtitle": "Rentaly reúne propiedades, inquilinos, managers y finanzas en un solo dashboard — para que siempre sepas qué tienes, quién alquila y cuánto ganas.",
+      "ctaPrimary": "Empezar gratis",
+      "ctaSecondary": "Iniciar sesión",
+      "highlights": {
+        "rentTracking": "Seguimiento de renta e hipoteca",
+        "documents": "Almacenamiento seguro de documentos",
+        "people": "Inquilinos y managers en un solo lugar"
+      }
+    },
+    "features": {
+      "title": "Todo lo que necesitas para gestionar tu portfolio",
+      "subtitle": "Un kit enfocado para landlords independientes y pequeños portfolios — sin la complejidad del software empresarial.",
+      "items": {
+        "financials": {
+          "title": "Resumen financiero",
+          "description": "Renta total, hipoteca total e ingresos netos calculados automáticamente en todas tus propiedades."
+        },
+        "properties": {
+          "title": "Propiedades",
+          "description": "Controla nombres, direcciones, renta e hipoteca de cada propiedad que tienes."
+        },
+        "documents": {
+          "title": "Almacenamiento de documentos",
+          "description": "Mantén pólizas de seguro y contratos vinculados a cada propiedad, protegidos con enlaces firmados."
+        },
+        "tenants": {
+          "title": "Inquilinos",
+          "description": "Guarda los datos de los inquilinos y vincúlalos directamente a las propiedades que alquilan."
+        },
+        "managers": {
+          "title": "Managers",
+          "description": "Asigna managers de propiedades con datos de empresa y contacto para consulta rápida."
+        }
+      }
+    },
+    "howItWorks": {
+      "title": "Listo en tres pasos",
+      "subtitle": "Sin complicaciones de configuración — solo añade lo que tienes y deja que el dashboard haga los cálculos.",
+      "steps": {
+        "addProperties": {
+          "title": "Añade tus propiedades",
+          "description": "Introduce cada propiedad con su renta, hipoteca y dirección, y adjunta los documentos de seguro y contrato."
+        },
+        "linkPeople": {
+          "title": "Vincula inquilinos y managers",
+          "description": "Asigna inquilinos a las propiedades que alquilan y conecta los managers responsables de cada una."
+        },
+        "trackFinances": {
+          "title": "Controla tus finanzas",
+          "description": "Tu dashboard resume todo en renta total, hipoteca e ingresos netos de un vistazo."
+        }
+      }
+    },
+    "cta": {
+      "title": "¿Listo para tomar el control de tus propiedades?",
+      "subtitle": "Crea tu cuenta y empieza a tener una visión más clara de tu portfolio inmobiliario hoy.",
+      "primary": "Crear tu cuenta",
+      "secondary": "Iniciar sesión",
+      "footnote": "No se requiere tarjeta de crédito."
+    },
+    "footer": {
+      "brand": "Rentaly",
+      "copyright": "© {{year}} Rentaly. Todos los derechos reservados."
+    },
+    "preview": {
+      "summary": {
+        "totalRent": "Renta total",
+        "totalMortgage": "Hipoteca total",
+        "netIncome": "Ingresos netos"
+      },
+      "properties": {
+        "title": "Propiedades",
+        "action": "Añadir propiedad",
+        "columns": {
+          "property": "Propiedad",
+          "tenant": "Inquilino",
+          "rent": "Renta",
+          "mortgage": "Hipoteca",
+          "docs": "Docs"
+        }
+      },
+      "managers": {
+        "title": "Managers",
+        "action": "Añadir manager",
+        "columns": {
+          "name": "Nombre",
+          "company": "Empresa",
+          "email": "Email",
+          "phone": "Teléfono"
+        }
+      },
+      "tenants": {
+        "title": "Inquilinos",
+        "action": "Añadir inquilino",
+        "columns": {
+          "name": "Nombre",
+          "property": "Propiedad",
+          "email": "Email",
+          "phone": "Teléfono"
+        }
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Iniciar sesión",
+      "description": "Introduce tus datos para entrar.",
+      "passwordLabel": "Contraseña",
+      "submitting": "Entrando...",
+      "submit": "Iniciar sesión",
+      "forgotPassword": "¿Olvidaste tu contraseña?"
+    },
+    "signUp": {
+      "title": "Crear cuenta",
+      "description": "Únete para empezar a gestionar tus propiedades.",
+      "fullNameLabel": "Nombre completo",
+      "passwordLabel": "Contraseña",
+      "confirmPasswordLabel": "Confirmar contraseña",
+      "submitting": "Creando cuenta...",
+      "submit": "Registrarse",
+      "placeholders": {
+        "fullName": "Juan Pérez",
+        "email": "tu@email.com"
+      },
+      "validation": {
+        "fullNameRequired": "El nombre es obligatorio"
+      }
+    },
+    "passwordReset": {
+      "title": "Restablecer contraseña",
+      "description": "Introduce tu email y te enviaremos un enlace para restablecer tu contraseña.",
+      "submitting": "Enviando...",
+      "submit": "Enviar enlace"
+    },
+    "newPassword": {
+      "title": "Nueva contraseña",
+      "description": "Introduce tu nueva contraseña.",
+      "passwordLabel": "Nueva contraseña",
+      "confirmPasswordLabel": "Confirmar contraseña",
+      "submit": "Guardar contraseña"
+    },
+    "toasts": {
+      "loginSuccess": "Sesión iniciada correctamente",
+      "loginError": "Error al iniciar sesión",
+      "signUpSuccess": "Cuenta creada correctamente.",
+      "signUpError": "Error al crear la cuenta",
+      "logoutSuccess": "Sesión cerrada correctamente",
+      "logoutError": "Error al cerrar sesión",
+      "passwordResetSuccess": "Email de restablecimiento enviado, revisa tu bandeja de entrada",
+      "passwordResetError": "Error al restablecer la contraseña",
+      "passwordUpdateSuccess": "Contraseña actualizada correctamente",
+      "passwordUpdateError": "Error al actualizar la contraseña"
+    }
+  },
+  "properties": {
+    "list": {
+      "title": "Propiedades",
+      "updatedOn": "actualizado a las: {{time}}",
+      "add": "Añadir propiedad",
+      "emptyTitle": "No se encontraron propiedades",
+      "emptyDescription": "Empieza añadiendo una nueva propiedad.",
+      "viewInsurance": "Ver seguro",
+      "noInsurance": "Sin seguro asignado",
+      "viewContract": "Ver contrato",
+      "noContract": "Sin contrato asignado",
+      "columns": {
+        "property": "PROPIEDAD",
+        "tenant": "INQUILINO",
+        "manager": "MANAGER",
+        "rent": "RENTA",
+        "mortgage": "HIPOTECA",
+        "insurance": "SEGURO",
+        "contract": "CONTRATO"
+      }
+    },
+    "add": {
+      "title": "Añadir propiedad",
+      "description": "Introduce los datos de la nueva propiedad.",
+      "submit": "Añadir propiedad"
+    },
+    "edit": {
+      "title": "Editar propiedad",
+      "description": "Actualiza los datos de la propiedad.",
+      "delete": "Eliminar propiedad",
+      "deleteDialogTitle": "Eliminar propiedad",
+      "deleteConfirm": "¿Estás seguro de querer eliminar esta propiedad?"
+    },
+    "form": {
+      "nameLabel": "Nombre",
+      "namePlaceholder": "nombre de la propiedad",
+      "addressLabel": "Dirección",
+      "addressPlaceholder": "dirección de la propiedad",
+      "rentLabel": "Renta",
+      "rentPlaceholder": "renta",
+      "mortgageLabel": "Hipoteca",
+      "mortgagePlaceholder": "hipoteca",
+      "insuranceLabel": "Póliza de seguro (PDF o imagen)",
+      "contractLabel": "Contrato de alquiler (PDF o imagen)",
+      "fileSelected": "Seleccionado: {{fileName}}",
+      "keepCurrentFile": "Deja vacío si deseas mantener el archivo actual.",
+      "managerLabel": "Manager (opcional)",
+      "managerPlaceholder": "Selecciona un manager",
+      "noManager": "Sin manager"
+    },
+    "toasts": {
+      "deleteSuccess": "Propiedad eliminada con éxito",
+      "deleteError": "Error al eliminar la propiedad",
+      "updateSuccess": "Propiedad actualizada con éxito",
+      "updateError": "Error al actualizar la propiedad",
+      "addSuccess": "Propiedad añadida con éxito",
+      "addError": "Error al añadir la propiedad",
+      "signedUrlError": "Error al obtener la URL firmada"
+    }
+  },
+  "tenants": {
+    "list": {
+      "title": "Inquilinos",
+      "add": "Añadir inquilino",
+      "emptyTitle": "No se encontraron inquilinos",
+      "emptyDescription": "Empieza añadiendo un nuevo inquilino.",
+      "columns": {
+        "name": "NOMBRE",
+        "property": "PROPIEDAD",
+        "email": "EMAIL",
+        "phone": "TELÉFONO"
+      }
+    },
+    "add": {
+      "title": "Añadir inquilino",
+      "description": "Introduce los datos del nuevo inquilino.",
+      "submit": "Añadir inquilino"
+    },
+    "edit": {
+      "title": "Editar inquilino",
+      "description": "Actualiza los datos del inquilino.",
+      "delete": "Eliminar inquilino",
+      "deleteDialogTitle": "Eliminar inquilino",
+      "deleteConfirm": "¿Estás seguro de querer eliminar a \"{{name}}\"?",
+      "deleteConfirmUnlink": " Se desvinculará de la propiedad \"{{property}}\"."
+    },
+    "form": {
+      "nameLabel": "Nombre",
+      "namePlaceholder": "nombre del inquilino",
+      "propertyLabel": "Propiedad (opcional)",
+      "propertyPlaceholder": "Selecciona una propiedad",
+      "noProperty": "Sin propiedad"
+    },
+    "toasts": {
+      "addSuccess": "Inquilino añadido con éxito",
+      "addError": "Error al añadir el inquilino",
+      "updateSuccess": "Inquilino actualizado con éxito",
+      "updateError": "Error al actualizar el inquilino",
+      "deleteSuccess": "Inquilino eliminado con éxito",
+      "deleteError": "Error al eliminar el inquilino"
+    }
+  },
+  "managers": {
+    "list": {
+      "title": "Managers",
+      "add": "Añadir manager",
+      "emptyTitle": "No se encontraron managers",
+      "emptyDescription": "Empieza añadiendo un nuevo manager.",
+      "columns": {
+        "name": "NOMBRE",
+        "company": "EMPRESA",
+        "email": "EMAIL",
+        "phone": "TELÉFONO"
+      }
+    },
+    "add": {
+      "title": "Añadir manager",
+      "description": "Introduce los datos del nuevo manager.",
+      "submit": "Añadir manager"
+    },
+    "edit": {
+      "title": "Editar manager",
+      "description": "Actualiza los datos del manager.",
+      "delete": "Eliminar manager",
+      "deleteDialogTitle": "Eliminar manager",
+      "deleteConfirm": "¿Estás seguro de querer eliminar a \"{{name}}\"? Las propiedades asignadas quedarán sin manager."
+    },
+    "form": {
+      "nameLabel": "Nombre",
+      "namePlaceholder": "nombre del manager",
+      "companyLabel": "Empresa",
+      "companyPlaceholder": "nombre de la empresa",
+      "emailPlaceholder": "correo electrónico"
+    },
+    "toasts": {
+      "addSuccess": "Manager añadido con éxito",
+      "addError": "Error al añadir el manager",
+      "updateSuccess": "Manager actualizado con éxito",
+      "updateError": "Error al actualizar el manager",
+      "deleteSuccess": "Manager eliminado con éxito",
+      "deleteError": "Error al eliminar el manager"
+    }
+  },
+  "financials": {
+    "totalRent": "Renta total",
+    "totalMortgage": "Hipoteca total",
+    "netIncome": "Ingresos netos",
+    "loadError": "Error al cargar los datos financieros."
+  }
+}

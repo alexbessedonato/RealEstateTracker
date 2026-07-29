@@ -1,19 +1,21 @@
+import { useTranslation } from "react-i18next";
 import { useFinancialsQuery } from "./queries";
 
 export const useFinancialsCardSet = () => {
+  const { t } = useTranslation();
   const { data: financials, isError } = useFinancialsQuery();
 
   const cards = [
     {
-      title: "Total Rent",
+      title: t("financials.totalRent"),
       value: `${financials?.total_rent ?? 0} €`,
     },
     {
-      title: "Total Mortgage",
+      title: t("financials.totalMortgage"),
       value: `${financials?.total_mortgage ?? 0} €`,
     },
     {
-      title: "Net Income",
+      title: t("financials.netIncome"),
       value: `${financials?.net_profit ?? 0} €`,
       format: "text-green-600"
 

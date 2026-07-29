@@ -11,9 +11,10 @@ import {
 import { useTenantsQuery } from "../hooks/queries";
 import { useNavigate } from "@tanstack/react-router";
 import type { TenantForTable } from "../types";
+import { useTranslation } from "react-i18next";
 
 export const TenantsList = () => {
-
+    const { t } = useTranslation();
     const { data: tenants = [] } = useTenantsQuery();
     const navigate = useNavigate();
     const navigateToAddTenant = () => navigate({ to: "/add-tenant" });
@@ -26,18 +27,18 @@ export const TenantsList = () => {
             <Card className="w-full">
                 <CardHeader>
                     <div className="flex justify-between items-center">
-                        <CardTitle>Tenants</CardTitle>
+                        <CardTitle>{t("tenants.list.title")}</CardTitle>
                         {tenants.length > 0 && (
-                            <Button variant="outline" className="bg-blue-950 text-white" onClick={navigateToAddTenant}>Add Tenant</Button>
+                            <Button variant="outline" className="bg-blue-950 text-white" onClick={navigateToAddTenant}>{t("tenants.list.add")}</Button>
                         )}
                     </div>
                 </CardHeader>
                 {tenants.length === 0 ? (
                     <CardContent>
                         <div className="flex flex-col items-center justify-center py-6">
-                            <h2 className="text-lg font-semibold text-gray-700">No tenants found</h2>
-                            <p className="mt-1 text-sm text-gray-500">Start by adding a new tenant.</p>
-                            <Button variant="outline" className="mt-3" onClick={navigateToAddTenant}>Add Tenant</Button>
+                            <h2 className="text-lg font-semibold text-gray-700">{t("tenants.list.emptyTitle")}</h2>
+                            <p className="mt-1 text-sm text-gray-500">{t("tenants.list.emptyDescription")}</p>
+                            <Button variant="outline" className="mt-3" onClick={navigateToAddTenant}>{t("tenants.list.add")}</Button>
                         </div>
                     </CardContent>
                 ) : (
@@ -46,19 +47,19 @@ export const TenantsList = () => {
                             <Table className="w-full">
                                 <TableHeader className="bg-gray-100">
                                     <TableRow>
-                                        <TableHead className="w-1/4 text-center font-semibold">NAME</TableHead>
-                                        <TableHead className="w-1/4 text-center font-semibold">PROPERTY</TableHead>
-                                        <TableHead className="w-1/4 text-center font-semibold">EMAIL</TableHead>
-                                        <TableHead className="w-1/4 text-center font-semibold">PHONE</TableHead>
+                                        <TableHead className="w-1/4 text-center font-semibold">{t("tenants.list.columns.name")}</TableHead>
+                                        <TableHead className="w-1/4 text-center font-semibold">{t("tenants.list.columns.property")}</TableHead>
+                                        <TableHead className="w-1/4 text-center font-semibold">{t("tenants.list.columns.email")}</TableHead>
+                                        <TableHead className="w-1/4 text-center font-semibold">{t("tenants.list.columns.phone")}</TableHead>
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody className="text-blue-950">
                                     {tenants.map((tenant) => (
                                         <TableRow key={tenant.id} onClick={() => navigateToEditTenant(tenant)}>
-                                            <TableCell className="text-center">{tenant.full_name ?? "-"}</TableCell>
-                                            <TableCell className="text-center">{tenant.property?.name ?? "-"}</TableCell>
-                                            <TableCell className="text-center">{tenant.email ?? "-"}</TableCell>
-                                            <TableCell className="text-center">{tenant.phone ?? "-"}</TableCell>
+                                            <TableCell className="text-center">{tenant.full_name ?? t("common.empty")}</TableCell>
+                                            <TableCell className="text-center">{tenant.property?.name ?? t("common.empty")}</TableCell>
+                                            <TableCell className="text-center">{tenant.email ?? t("common.empty")}</TableCell>
+                                            <TableCell className="text-center">{tenant.phone ?? t("common.empty")}</TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>

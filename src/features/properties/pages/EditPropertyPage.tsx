@@ -1,5 +1,6 @@
 import { useForm } from "@tanstack/react-form";
 import { useNavigate } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
@@ -27,6 +28,7 @@ import { useState } from "react";
 import { GenericAlertDialog } from "@/components/layout/GenericAlertDialog";
 
 export const EditPropertyPage = () => {
+    const { t } = useTranslation();
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   
@@ -78,10 +80,10 @@ export const EditPropertyPage = () => {
       <DialogContent className="sm:max-w-sm backdrop-blur-md bg-white/90">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center">
-            Edit Property
+            {t("properties.edit.title")}
           </DialogTitle>
           <DialogDescription className="text-center">
-            Introduce los datos de la propiedad a editar.
+            {t("properties.edit.description")}
           </DialogDescription>
         </DialogHeader>
 
@@ -96,13 +98,13 @@ export const EditPropertyPage = () => {
           <form.Field name="name">
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Nombre</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("properties.form.nameLabel")}</FieldLabel>
                 <Input
                   id={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="nombre de la propiedad"
+                  placeholder={t("properties.form.namePlaceholder")}
                 />
               </Field>
             )}
@@ -111,13 +113,13 @@ export const EditPropertyPage = () => {
           <form.Field name="address">
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Dirección</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("properties.form.addressLabel")}</FieldLabel>
                 <Input
                   id={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="dirección de la propiedad"
+                  placeholder={t("properties.form.addressPlaceholder")}
                 />
               </Field>
             )}
@@ -126,14 +128,14 @@ export const EditPropertyPage = () => {
           <form.Field name="rent">
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>rent</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("properties.form.rentLabel")}</FieldLabel>
                 <Input
                   id={field.name}
                   type="number"
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.valueAsNumber)}
-                  placeholder="renta"
+                  placeholder={t("properties.form.rentPlaceholder")}
                 />
               </Field>
             )}
@@ -142,14 +144,14 @@ export const EditPropertyPage = () => {
           <form.Field name="mortgage">
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>mortgage</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("properties.form.mortgageLabel")}</FieldLabel>
                 <Input
                   id={field.name}
                   type="number"
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.valueAsNumber)}
-                  placeholder="hipoteca"
+                  placeholder={t("properties.form.mortgagePlaceholder")}
                 />
               </Field>
             )}
@@ -159,10 +161,10 @@ export const EditPropertyPage = () => {
             {(field) => (
               <Field>
                 <FieldLabel htmlFor={field.name}>
-                  Póliza de seguro (PDF o Imagen)
+                  {t("properties.form.insuranceLabel")}
                 </FieldLabel>
                 <FieldDescription>
-                  Deja vacío si deseas mantener el archivo actual.
+                  {t("properties.form.keepCurrentFile")}
                 </FieldDescription>
                 <Input
                   id={field.name}
@@ -182,10 +184,10 @@ export const EditPropertyPage = () => {
             {(field) => (
               <Field>
                 <FieldLabel htmlFor={field.name}>
-                  Contrato de alquiler (PDF o Imagen)
+                  {t("properties.form.contractLabel")}
                 </FieldLabel>
                 <FieldDescription>
-                  Deja vacío si deseas mantener el archivo actual.
+                  {t("properties.form.keepCurrentFile")}
                 </FieldDescription>
                 <Input
                   id={field.name}
@@ -204,16 +206,16 @@ export const EditPropertyPage = () => {
           <form.Field name="manager_id">
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Manager (Opcional)</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("properties.form.managerLabel")}</FieldLabel>
                 <Select
                   value={field.state.value}
                   onValueChange={field.handleChange}
                 >
                   <SelectTrigger id={field.name}>
-                    <SelectValue placeholder="Selecciona un manager" />
+                    <SelectValue placeholder={t("properties.form.managerPlaceholder")} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="none">Sin manager</SelectItem>
+                    <SelectItem value="none">{t("properties.form.noManager")}</SelectItem>
 
                     {managers.map((manager) => (
                       <SelectItem key={manager.id} value={manager.id}>
@@ -237,8 +239,8 @@ export const EditPropertyPage = () => {
               }
             >
               {form.state.isSubmitting || editProperty.isPending
-                ? "Guardando..."
-                : "Guardar cambios"}
+                ? t("common.saving")
+                : t("common.saveChanges")}
             </Button>
           </DialogFooter>
 
@@ -250,7 +252,7 @@ export const EditPropertyPage = () => {
               onClick={() => setShowDeleteDialog(true)}
               disabled={deleteProperty.isPending}
             >
-              Eliminar Propiedad
+              {t("properties.edit.delete")}
             </Button>
           </DialogFooter>
         </form>
@@ -263,8 +265,8 @@ export const EditPropertyPage = () => {
         if (!deleteProperty.isPending) setShowDeleteDialog(open);
       }}
       isPending={deleteProperty.isPending}
-      title="Eliminar Propiedad"
-      description="¿Estás seguro de querer eliminar esta propiedad?"
+      title={t("properties.edit.deleteDialogTitle")}
+      description={t("properties.edit.deleteConfirm")}
       onConfirm={async () => {
         await deleteProperty.mutateAsync(propertyId);
         navigateToDashboard();

@@ -21,8 +21,10 @@ import {
 } from "@/components/ui/select";
 import { useDismissDialog } from "@/hooks/useDismissDialog";
 import { useAddTenantMutation } from "../hooks/queries";
+import { useTranslation } from "react-i18next";
 
 export const AddTenantPage = () => {
+  const { t } = useTranslation();
   const addTenant = useAddTenantMutation();
   const navigate = useNavigate();
   const dismissDialog = useDismissDialog();
@@ -52,10 +54,10 @@ export const AddTenantPage = () => {
       <DialogContent className="sm:max-w-sm backdrop-blur-md bg-white/90">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center">
-            Add Tenant
+            {t("tenants.add.title")}
           </DialogTitle>
           <DialogDescription className="text-center">
-            Introduce los datos del nuevo inquilino.
+            {t("tenants.add.description")}
           </DialogDescription>
         </DialogHeader>
 
@@ -70,13 +72,13 @@ export const AddTenantPage = () => {
           <form.Field name="full_name">
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Nombre</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("tenants.form.nameLabel")}</FieldLabel>
                 <Input
                   id={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="nombre del inquilino"
+                  placeholder={t("tenants.form.namePlaceholder")}
                 />
               </Field>
             )}
@@ -86,17 +88,17 @@ export const AddTenantPage = () => {
             name="email"
             validators={{
               onChange: ({ value }) =>
-                !value.includes("@") ? "Email inválido" : undefined,
+                !value.includes("@") ? t("common.validation.emailInvalid") : undefined,
             }}
             children={(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("common.email")}</FieldLabel>
                 <Input
                   id={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="ejemplo@correo.com"
+                  placeholder={t("common.placeholders.email")}
                 />
                 {field.state.meta.errors.length > 0 && (
                   <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
@@ -112,21 +114,21 @@ export const AddTenantPage = () => {
                 if (!value) return undefined;
                 const isValid = /^\+?\d{9,15}$/.test(value);
                 return !isValid
-                  ? "Teléfono inválido (ej: +34600123456 o 600123456)"
+                  ? t("common.validation.phoneInvalid")
                   : undefined;
               },
             }}
           >
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Teléfono</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("common.phone")}</FieldLabel>
                 <Input
                   id={field.name}
                   type="tel"
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="número de teléfono"
+                  placeholder={t("common.placeholders.phone")}
                 />
                 {field.state.meta.errors.length > 0 && (
                   <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
@@ -138,16 +140,16 @@ export const AddTenantPage = () => {
           <form.Field name="property_id">
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Propiedad (Opcional)</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("tenants.form.propertyLabel")}</FieldLabel>
                 <Select
                   value={field.state.value}
                   onValueChange={field.handleChange}
                 >
                   <SelectTrigger id={field.name}>
-                    <SelectValue placeholder="Selecciona una propiedad" />
+                    <SelectValue placeholder={t("tenants.form.propertyPlaceholder")} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="none">Sin propiedad</SelectItem>
+                    <SelectItem value="none">{t("tenants.form.noProperty")}</SelectItem>
 
                     {properties?.map((property) => (
                       <SelectItem key={property.id} value={property.id}>
@@ -168,8 +170,8 @@ export const AddTenantPage = () => {
               disabled={form.state.isSubmitting || addTenant.isPending}
             >
               {form.state.isSubmitting || addTenant.isPending
-                ? "Añadiendo..."
-                : "Añadir Inquilino"}
+                ? t("common.adding")
+                : t("tenants.add.submit")}
             </Button>
           </DialogFooter>
         </form>

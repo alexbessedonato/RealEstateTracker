@@ -1,4 +1,5 @@
 import { useForm } from "@tanstack/react-form";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -15,6 +16,7 @@ import { usePasswordUpdateMutation } from "../hooks/mutations";
 import { useNavigate } from "@tanstack/react-router";
 
 export function NewPasswordPage() {
+  const { t } = useTranslation();
   const dismissDialog = useDismissDialog("/");
   const navigate = useNavigate();
   const navigateToDashboard = () => navigate({ to: "/dashboard" });
@@ -36,10 +38,10 @@ export function NewPasswordPage() {
       <DialogContent className="sm:max-w-sm backdrop-blur-md bg-white/90">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center">
-            Nueva Contraseña
+            {t('auth.newPassword.title')}
           </DialogTitle>
           <DialogDescription className="text-center">
-            Introduce tu nueva contraseña.
+            {t('auth.newPassword.description')}
           </DialogDescription>
         </DialogHeader>
 
@@ -55,11 +57,11 @@ export function NewPasswordPage() {
             name="password"
             validators={{
               onChange: ({ value }) =>
-                value.length < 6 ? "Mínimo 6 caracteres" : undefined,
+                value.length < 6 ? t('common.validation.minPassword') : undefined,
             }}
             children={(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Nueva Contraseña</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t('auth.newPassword.passwordLabel')}</FieldLabel>
                 <Input
                   id={field.name}
                   type="password"
@@ -79,14 +81,14 @@ export function NewPasswordPage() {
             validators={{
               onChange: ({ value, fieldApi }) => {
                 if (value !== fieldApi.form.getFieldValue("password")) {
-                  return "Las contraseñas no coinciden";
+                  return t('common.validation.passwordMismatch');
                 }
                 return undefined;
               },
             }}
             children={(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Confirmar Contraseña</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t('auth.newPassword.confirmPasswordLabel')}</FieldLabel>
                 <Input
                   id={field.name}
                   type="password"
@@ -107,7 +109,7 @@ export function NewPasswordPage() {
               className="w-full"
               disabled={form.state.isSubmitting}
             >
-              {form.state.isSubmitting ? "Guardando..." : "Guardar contraseña"}
+              {form.state.isSubmitting ? t('common.saving') : t('auth.newPassword.submit')}
             </Button>
           </DialogFooter>
         </form>

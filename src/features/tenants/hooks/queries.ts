@@ -7,6 +7,7 @@ import { addTenant, deleteTenant, editTenant, getTenants } from "../api/tenants"
 import type { AddTenantInput, TenantEditInput } from "../types";
 import { TENANTS_QUERY_KEY } from "../constants/tenantsQueryKey";
 import { PROPERTIES_QUERY_KEY } from "@/features/properties/constants/propertiesQueryKey";
+import i18n from "@/i18n.js";
 
 export const useTenantsQuery = () => {
   const { status } = useStore($auth);
@@ -23,12 +24,12 @@ export const useAddTenantMutation = () => {
   return useMutation({
     mutationFn: (tenant: AddTenantInput) => addTenant(tenant),
     onSuccess: () => {
-      toast.success("Inquilino añadido con éxito");
+      toast.success(i18n.t("tenants.toasts.addSuccess"));
       queryClient.invalidateQueries({ queryKey: TENANTS_QUERY_KEY });
       queryClient.invalidateQueries({ queryKey: PROPERTIES_QUERY_KEY });
     },
     onError: (error: unknown) => {
-      toast.error("Error al agregar inquilino", {
+      toast.error(i18n.t("tenants.toasts.addError"), {
         description: getErrorMessage(error),
       });
     },
@@ -41,12 +42,12 @@ export const useEditTenantMutation = () => {
   return useMutation({
     mutationFn: (tenant: TenantEditInput) => editTenant(tenant),
     onSuccess: () => {
-      toast.success("Inquilino actualizado con éxito");
+      toast.success(i18n.t("tenants.toasts.updateSuccess"));
       queryClient.invalidateQueries({ queryKey: TENANTS_QUERY_KEY });
       queryClient.invalidateQueries({ queryKey: PROPERTIES_QUERY_KEY });
     },
     onError: (error: unknown) => {
-      toast.error("Error al actualizar inquilino", {
+      toast.error(i18n.t("tenants.toasts.updateError"), {
         description: getErrorMessage(error),
       });
     },
@@ -59,12 +60,12 @@ export const useDeleteTenantMutation = () => {
   return useMutation({
     mutationFn: (tenantId: string) => deleteTenant(tenantId),
     onSuccess: () => {
-      toast.success("Inquilino eliminado con éxito");
+      toast.success(i18n.t("tenants.toasts.deleteSuccess"));
       queryClient.invalidateQueries({ queryKey: TENANTS_QUERY_KEY });
       queryClient.invalidateQueries({ queryKey: PROPERTIES_QUERY_KEY });
     },
     onError: (error: unknown) => {
-      toast.error("Error al eliminar inquilino", {
+      toast.error(i18n.t("tenants.toasts.deleteError"), {
         description: getErrorMessage(error),
       });
     },
