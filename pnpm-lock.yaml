@@ -14,6 +14,15 @@ importers:
       '@fontsource-variable/geist':
         specifier: ^5.2.8
         version: 5.2.9
+      '@fontsource-variable/ibm-plex-sans':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/oswald':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource-variable/roboto-condensed':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@heroui/react':
         specifier: ^3.0.2
         version: 3.1.0(@react-spectrum/provider@3.11.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(tailwindcss@4.3.0)
@@ -390,6 +399,15 @@ packages:
 
   '@fontsource-variable/geist@5.2.9':
     resolution: {integrity: sha512-TP+QSBG3wxKGPE33CbMy/L0Nu3qvJ6Fy81Yc4LnQ95xH+i+cfEp8fyU8/kfV14YwszxIFPhnoMTbjL71waVpyQ==}
+
+  '@fontsource-variable/ibm-plex-sans@5.3.0':
+    resolution: {integrity: sha512-agG8tXFEo0hD9+J7npa4vbbWult52eMLVaQ6WQRlhs/iCAojrMAoejru85W9HTVXHfyUj96KM7gp/KGAS87XaQ==}
+
+  '@fontsource-variable/oswald@5.3.0':
+    resolution: {integrity: sha512-sSZzcTeaQGNyZbTVlS4tNNHElK38UktFLqKd6NQDLFCBV27320rQC3kXSZVytYm1PPjKmPxqVaGwqj7LEKUWQw==}
+
+  '@fontsource-variable/roboto-condensed@5.3.0':
+    resolution: {integrity: sha512-RpYyF6G0h0nsVcCDLRIbZbK+l8cVDoe1PVbzvzVhtLzCiPqIEEGDs9xB9ZWPJawKS4bJzpKn42KgZFISF/AOuQ==}
 
   '@formatjs/ecma402-abstract@2.3.6':
     resolution: {integrity: sha512-HJnTFeRM2kVFVr5gr5kH1XP6K0JcJtE7Lzvtr3FS/so5f1kpsqqqxy5JF+FRaO6H2qmcMfAUIox7AJteieRtVw==}
@@ -3812,6 +3830,12 @@ snapshots:
   '@floating-ui/utils@0.2.11': {}
 
   '@fontsource-variable/geist@5.2.9': {}
+
+  '@fontsource-variable/ibm-plex-sans@5.3.0': {}
+
+  '@fontsource-variable/oswald@5.3.0': {}
+
+  '@fontsource-variable/roboto-condensed@5.3.0': {}
 
   '@formatjs/ecma402-abstract@2.3.6':
     dependencies:
