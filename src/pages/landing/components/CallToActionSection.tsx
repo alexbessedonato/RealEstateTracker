@@ -1,9 +1,11 @@
 import { useNavigate } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 
 export const CallToActionSection = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
@@ -14,11 +16,10 @@ export const CallToActionSection = () => {
         />
         <div className="relative mx-auto max-w-2xl">
           <h2 className="text-2xl font-semibold text-white sm:text-3xl">
-            Ready to take control of your properties?
+            {t("landing.cta.title")}
           </h2>
           <p className="mt-4 text-base text-blue-100 sm:text-lg">
-            Create your account and start building a clearer picture of your
-            real estate portfolio today.
+            {t("landing.cta.subtitle")}
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button
@@ -26,7 +27,7 @@ export const CallToActionSection = () => {
               className="h-11 bg-white px-6 text-blue-950 hover:bg-slate-100"
               onClick={() => navigate({ to: "/signup" })}
             >
-              Create your account
+              {t("landing.cta.primary")}
               <ArrowRight className="ml-1 size-4" />
             </Button>
             <Button
@@ -35,11 +36,11 @@ export const CallToActionSection = () => {
               className="h-11 border-white/30 bg-transparent px-6 text-white hover:bg-white/10 hover:text-white"
               onClick={() => navigate({ to: "/login" })}
             >
-              Sign in
+              {t("landing.cta.secondary")}
             </Button>
           </div>
           <p className="mt-4 text-sm text-blue-200/80">
-            No credit card required.
+            {t("landing.cta.footnote")}
           </p>
         </div>
       </div>

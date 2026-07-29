@@ -5,6 +5,7 @@ import {
   UserCog,
   Users,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import {
   Card,
   CardDescription,
@@ -15,63 +16,59 @@ import {
 const features = [
   {
     icon: LineChart,
-    title: "Financial overview",
-    description:
-      "Total rent, total mortgage, and net income calculated automatically across every property.",
+    titleKey: "landing.features.items.financials.title",
+    descriptionKey: "landing.features.items.financials.description",
     span: "sm:col-span-2",
     featured: true,
   },
   {
     icon: Building2,
-    title: "Properties",
-    description:
-      "Track names, addresses, rent, and mortgage for each property you own.",
+    titleKey: "landing.features.items.properties.title",
+    descriptionKey: "landing.features.items.properties.description",
     span: "",
     featured: false,
   },
   {
     icon: FileText,
-    title: "Document storage",
-    description:
-      "Keep insurance policies and contracts attached to each property, secured behind signed links.",
+    titleKey: "landing.features.items.documents.title",
+    descriptionKey: "landing.features.items.documents.description",
     span: "",
     featured: false,
   },
   {
     icon: Users,
-    title: "Tenants",
-    description:
-      "Store tenant details and link them directly to the properties they rent.",
+    titleKey: "landing.features.items.tenants.title",
+    descriptionKey: "landing.features.items.tenants.description",
     span: "",
     featured: false,
   },
   {
     icon: UserCog,
-    title: "Managers",
-    description:
-      "Assign property managers with company and contact details for quick reference.",
+    titleKey: "landing.features.items.managers.title",
+    descriptionKey: "landing.features.items.managers.description",
     span: "",
     featured: false,
   },
 ] as const;
 
 export const FeaturesSection = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-          Everything you need to run your portfolio
+          {t("landing.features.title")}
         </h2>
         <p className="mt-4 text-base text-slate-600 sm:text-lg">
-          A focused toolkit for independent landlords and small portfolio
-          owners — without the complexity of enterprise software.
+          {t("landing.features.subtitle")}
         </p>
       </div>
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {features.map(({ icon: Icon, title, description, span, featured }) => (
+        {features.map(({ icon: Icon, titleKey, descriptionKey, span, featured }) => (
           <Card
-            key={title}
+            key={titleKey}
             className={`border-slate-200/80 shadow-sm transition-shadow hover:shadow-md ${span} ${
               featured
                 ? "bg-gradient-to-br from-blue-950 to-slate-900 text-white"
@@ -91,14 +88,14 @@ export const FeaturesSection = () => {
               <CardTitle
                 className={`text-lg ${featured ? "text-white" : "text-slate-900"}`}
               >
-                {title}
+                {t(titleKey)}
               </CardTitle>
               <CardDescription
                 className={`text-base leading-relaxed ${
                   featured ? "text-blue-100" : ""
                 }`}
               >
-                {description}
+                {t(descriptionKey)}
               </CardDescription>
             </CardHeader>
           </Card>

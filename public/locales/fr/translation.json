@@ -1,0 +1,353 @@
+{
+  "meta": {
+    "title": "Rentaly - Gérez vos biens locatifs",
+    "description": "Tableau de bord pour les propriétaires indépendants. Gérez vos biens, locataires et contrats en un seul endroit.",
+    "ogTitle": "Rentaly",
+    "ogDescription": "Tableau de bord pour les propriétaires indépendants. Gérez vos biens, locataires et contrats en un seul endroit."
+  },
+  "common": {
+    "loading": "Chargement",
+    "loadingEllipsis": "Chargement...",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "deleting": "Suppression...",
+    "close": "Fermer",
+    "unexpectedError": "Erreur inattendue",
+    "notAssigned": "Non assigné",
+    "empty": "-",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "name": "Nom",
+    "saving": "Enregistrement...",
+    "saveChanges": "Enregistrer les modifications",
+    "adding": "Ajout...",
+    "placeholders": {
+      "email": "exemple@email.com",
+      "phone": "numéro de téléphone"
+    },
+    "validation": {
+      "emailInvalid": "E-mail invalide",
+      "minPassword": "Minimum 6 caractères",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "phoneInvalid": "Téléphone invalide (ex. : +34600123456 ou 600123456)"
+    }
+  },
+  "layout": {
+    "logoAlt": "Logo Rentaly",
+    "searchPlaceholder": "Rechercher un bien",
+    "nav": {
+      "login": "Connexion",
+      "signUp": "S'inscrire",
+      "logout": "Déconnexion",
+      "loggingOut": "Déconnexion..."
+    }
+  },
+  "landing": {
+    "hero": {
+      "badge": "La gestion immobilière, simplifiée",
+      "title": "Tout votre portefeuille,",
+      "titleAccent": "clairement organisé",
+      "subtitle": "Rentaly rassemble biens, locataires, gestionnaires et finances dans un seul tableau de bord — pour toujours savoir ce que vous possédez, qui loue et combien vous gagnez.",
+      "ctaPrimary": "Commencer gratuitement",
+      "ctaSecondary": "Se connecter",
+      "highlights": {
+        "rentTracking": "Suivi des loyers et hypothèques",
+        "documents": "Stockage sécurisé des documents",
+        "people": "Locataires et gestionnaires au même endroit"
+      }
+    },
+    "features": {
+      "title": "Tout ce qu'il faut pour gérer votre portefeuille",
+      "subtitle": "Une boîte à outils ciblée pour les propriétaires indépendants et les petits portefeuilles — sans la complexité des logiciels d'entreprise.",
+      "items": {
+        "financials": {
+          "title": "Aperçu financier",
+          "description": "Loyer total, hypothèque totale et revenu net calculés automatiquement pour chaque bien."
+        },
+        "properties": {
+          "title": "Biens",
+          "description": "Suivez les noms, adresses, loyers et hypothèques de chaque bien que vous possédez."
+        },
+        "documents": {
+          "title": "Stockage de documents",
+          "description": "Conservez les polices d'assurance et les contrats liés à chaque bien, protégés par des liens signés."
+        },
+        "tenants": {
+          "title": "Locataires",
+          "description": "Enregistrez les informations des locataires et associez-les directement aux biens qu'ils louent."
+        },
+        "managers": {
+          "title": "Gestionnaires",
+          "description": "Assignez des gestionnaires avec les détails de l'entreprise et les contacts pour un accès rapide."
+        }
+      }
+    },
+    "howItWorks": {
+      "title": "Opérationnel en trois étapes",
+      "subtitle": "Pas de configuration complexe — ajoutez simplement ce que vous possédez et laissez le tableau de bord faire les calculs.",
+      "steps": {
+        "addProperties": {
+          "title": "Ajoutez vos biens",
+          "description": "Saisissez chaque bien avec son loyer, son hypothèque et son adresse, puis joignez les documents d'assurance et de contrat."
+        },
+        "linkPeople": {
+          "title": "Liez locataires et gestionnaires",
+          "description": "Assignez les locataires aux biens qu'ils louent et connectez les gestionnaires responsables de chacun."
+        },
+        "trackFinances": {
+          "title": "Suivez vos finances",
+          "description": "Votre tableau de bord regroupe tout en loyer total, hypothèque et revenu net en un coup d'œil."
+        }
+      }
+    },
+    "cta": {
+      "title": "Prêt à prendre le contrôle de vos biens ?",
+      "subtitle": "Créez votre compte et commencez dès aujourd'hui à clarifier votre portefeuille immobilier.",
+      "primary": "Créer votre compte",
+      "secondary": "Se connecter",
+      "footnote": "Aucune carte bancaire requise."
+    },
+    "footer": {
+      "brand": "Rentaly",
+      "copyright": "© {{year}} Rentaly. Tous droits réservés."
+    },
+    "preview": {
+      "summary": {
+        "totalRent": "Loyer total",
+        "totalMortgage": "Hypothèque totale",
+        "netIncome": "Revenu net"
+      },
+      "properties": {
+        "title": "Biens",
+        "action": "Ajouter un bien",
+        "columns": {
+          "property": "Bien",
+          "tenant": "Locataire",
+          "rent": "Loyer",
+          "mortgage": "Hypothèque",
+          "docs": "Docs"
+        }
+      },
+      "managers": {
+        "title": "Gestionnaires",
+        "action": "Ajouter un gestionnaire",
+        "columns": {
+          "name": "Nom",
+          "company": "Entreprise",
+          "email": "E-mail",
+          "phone": "Téléphone"
+        }
+      },
+      "tenants": {
+        "title": "Locataires",
+        "action": "Ajouter un locataire",
+        "columns": {
+          "name": "Nom",
+          "property": "Bien",
+          "email": "E-mail",
+          "phone": "Téléphone"
+        }
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Connexion",
+      "description": "Entrez vos identifiants pour vous connecter.",
+      "passwordLabel": "Mot de passe",
+      "submitting": "Connexion...",
+      "submit": "Se connecter",
+      "forgotPassword": "Mot de passe oublié ?"
+    },
+    "signUp": {
+      "title": "Créer un compte",
+      "description": "Rejoignez-nous pour commencer à gérer vos biens.",
+      "fullNameLabel": "Nom complet",
+      "passwordLabel": "Mot de passe",
+      "confirmPasswordLabel": "Confirmer le mot de passe",
+      "submitting": "Création du compte...",
+      "submit": "S'inscrire",
+      "placeholders": {
+        "fullName": "Jean Dupont",
+        "email": "vous@email.com"
+      },
+      "validation": {
+        "fullNameRequired": "Le nom est obligatoire"
+      }
+    },
+    "passwordReset": {
+      "title": "Réinitialiser le mot de passe",
+      "description": "Entrez votre e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+      "submitting": "Envoi...",
+      "submit": "Envoyer le lien"
+    },
+    "newPassword": {
+      "title": "Nouveau mot de passe",
+      "description": "Entrez votre nouveau mot de passe.",
+      "passwordLabel": "Nouveau mot de passe",
+      "confirmPasswordLabel": "Confirmer le mot de passe",
+      "submit": "Enregistrer le mot de passe"
+    },
+    "toasts": {
+      "loginSuccess": "Connexion réussie",
+      "loginError": "Erreur de connexion",
+      "signUpSuccess": "Compte créé avec succès.",
+      "signUpError": "Erreur lors de la création du compte",
+      "logoutSuccess": "Déconnexion réussie",
+      "logoutError": "Erreur lors de la déconnexion",
+      "passwordResetSuccess": "E-mail de réinitialisation envoyé, vérifiez votre boîte de réception",
+      "passwordResetError": "Erreur lors de la réinitialisation du mot de passe",
+      "passwordUpdateSuccess": "Mot de passe mis à jour avec succès",
+      "passwordUpdateError": "Erreur lors de la mise à jour du mot de passe"
+    }
+  },
+  "properties": {
+    "list": {
+      "title": "Biens",
+      "updatedOn": "mis à jour à : {{time}}",
+      "add": "Ajouter un bien",
+      "emptyTitle": "Aucun bien trouvé",
+      "emptyDescription": "Commencez par ajouter un nouveau bien.",
+      "viewInsurance": "Voir l'assurance",
+      "noInsurance": "Aucune assurance assignée",
+      "viewContract": "Voir le contrat",
+      "noContract": "Aucun contrat assigné",
+      "columns": {
+        "property": "BIEN",
+        "tenant": "LOCATAIRE",
+        "manager": "GESTIONNAIRE",
+        "rent": "LOYER",
+        "mortgage": "HYPOTHÈQUE",
+        "insurance": "ASSURANCE",
+        "contract": "CONTRAT"
+      }
+    },
+    "add": {
+      "title": "Ajouter un bien",
+      "description": "Saisissez les détails du nouveau bien.",
+      "submit": "Ajouter un bien"
+    },
+    "edit": {
+      "title": "Modifier le bien",
+      "description": "Mettez à jour les détails du bien.",
+      "delete": "Supprimer le bien",
+      "deleteDialogTitle": "Supprimer le bien",
+      "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ce bien ?"
+    },
+    "form": {
+      "nameLabel": "Nom",
+      "namePlaceholder": "nom du bien",
+      "addressLabel": "Adresse",
+      "addressPlaceholder": "adresse du bien",
+      "rentLabel": "Loyer",
+      "rentPlaceholder": "loyer",
+      "mortgageLabel": "Hypothèque",
+      "mortgagePlaceholder": "hypothèque",
+      "insuranceLabel": "Police d'assurance (PDF ou image)",
+      "contractLabel": "Contrat de location (PDF ou image)",
+      "fileSelected": "Sélectionné : {{fileName}}",
+      "keepCurrentFile": "Laissez vide pour conserver le fichier actuel.",
+      "managerLabel": "Gestionnaire (facultatif)",
+      "managerPlaceholder": "Sélectionnez un gestionnaire",
+      "noManager": "Aucun gestionnaire"
+    },
+    "toasts": {
+      "deleteSuccess": "Bien supprimé avec succès",
+      "deleteError": "Erreur lors de la suppression du bien",
+      "updateSuccess": "Bien mis à jour avec succès",
+      "updateError": "Erreur lors de la mise à jour du bien",
+      "addSuccess": "Bien ajouté avec succès",
+      "addError": "Erreur lors de l'ajout du bien",
+      "signedUrlError": "Erreur lors de l'obtention de l'URL signée"
+    }
+  },
+  "tenants": {
+    "list": {
+      "title": "Locataires",
+      "add": "Ajouter un locataire",
+      "emptyTitle": "Aucun locataire trouvé",
+      "emptyDescription": "Commencez par ajouter un nouveau locataire.",
+      "columns": {
+        "name": "NOM",
+        "property": "BIEN",
+        "email": "E-MAIL",
+        "phone": "TÉLÉPHONE"
+      }
+    },
+    "add": {
+      "title": "Ajouter un locataire",
+      "description": "Saisissez les détails du nouveau locataire.",
+      "submit": "Ajouter un locataire"
+    },
+    "edit": {
+      "title": "Modifier le locataire",
+      "description": "Mettez à jour les détails du locataire.",
+      "delete": "Supprimer le locataire",
+      "deleteDialogTitle": "Supprimer le locataire",
+      "deleteConfirm": "Êtes-vous sûr de vouloir supprimer « {{name}} » ?",
+      "deleteConfirmUnlink": " Il sera dissocié du bien « {{property}} »."
+    },
+    "form": {
+      "nameLabel": "Nom",
+      "namePlaceholder": "nom du locataire",
+      "propertyLabel": "Bien (facultatif)",
+      "propertyPlaceholder": "Sélectionnez un bien",
+      "noProperty": "Aucun bien"
+    },
+    "toasts": {
+      "addSuccess": "Locataire ajouté avec succès",
+      "addError": "Erreur lors de l'ajout du locataire",
+      "updateSuccess": "Locataire mis à jour avec succès",
+      "updateError": "Erreur lors de la mise à jour du locataire",
+      "deleteSuccess": "Locataire supprimé avec succès",
+      "deleteError": "Erreur lors de la suppression du locataire"
+    }
+  },
+  "managers": {
+    "list": {
+      "title": "Gestionnaires",
+      "add": "Ajouter un gestionnaire",
+      "emptyTitle": "Aucun gestionnaire trouvé",
+      "emptyDescription": "Commencez par ajouter un nouveau gestionnaire.",
+      "columns": {
+        "name": "NOM",
+        "company": "ENTREPRISE",
+        "email": "E-MAIL",
+        "phone": "TÉLÉPHONE"
+      }
+    },
+    "add": {
+      "title": "Ajouter un gestionnaire",
+      "description": "Saisissez les détails du nouveau gestionnaire.",
+      "submit": "Ajouter un gestionnaire"
+    },
+    "edit": {
+      "title": "Modifier le gestionnaire",
+      "description": "Mettez à jour les détails du gestionnaire.",
+      "delete": "Supprimer le gestionnaire",
+      "deleteDialogTitle": "Supprimer le gestionnaire",
+      "deleteConfirm": "Êtes-vous sûr de vouloir supprimer « {{name}} » ? Les biens assignés resteront sans gestionnaire."
+    },
+    "form": {
+      "nameLabel": "Nom",
+      "namePlaceholder": "nom du gestionnaire",
+      "companyLabel": "Entreprise",
+      "companyPlaceholder": "nom de l'entreprise",
+      "emailPlaceholder": "adresse e-mail"
+    },
+    "toasts": {
+      "addSuccess": "Gestionnaire ajouté avec succès",
+      "addError": "Erreur lors de l'ajout du gestionnaire",
+      "updateSuccess": "Gestionnaire mis à jour avec succès",
+      "updateError": "Erreur lors de la mise à jour du gestionnaire",
+      "deleteSuccess": "Gestionnaire supprimé avec succès",
+      "deleteError": "Erreur lors de la suppression du gestionnaire"
+    }
+  },
+  "financials": {
+    "totalRent": "Loyer total",
+    "totalMortgage": "Hypothèque totale",
+    "netIncome": "Revenu net",
+    "loadError": "Erreur lors du chargement des données financières."
+  }
+}

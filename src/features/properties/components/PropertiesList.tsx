@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Eye } from "lucide-react"
 import { ReceiptText } from "lucide-react"
 import { useNavigate } from "@tanstack/react-router"
+import { useTranslation } from "react-i18next"
 import { usePropertiesList } from "../hooks/usePropertiesList"
 import {
     Table,
@@ -15,6 +16,7 @@ import {
 import type { PropertyForTable } from "../types"
 
 export const PropertiesList = () => {
+    const { t } = useTranslation();
     const { properties, handleOpenFile } = usePropertiesList();
 
     const navigate = useNavigate();
@@ -27,22 +29,22 @@ export const PropertiesList = () => {
                 <CardHeader>
                     <div className="flex justify-between items-center">
                         <div>
-                            <CardTitle>Properties</CardTitle>
+                            <CardTitle>{t("properties.list.title")}</CardTitle>
                             <CardDescription>
-                                updated on: {new Date().toLocaleTimeString()}
+                                {t("properties.list.updatedOn", { time: new Date().toLocaleTimeString() })}
                             </CardDescription>
                         </div>
                         {properties.length > 0 && (
-                            <Button variant="outline" className="bg-blue-950 text-white" onClick={navigateToAddProperty}>Add Property</Button>
+                            <Button variant="outline" className="bg-blue-950 text-white" onClick={navigateToAddProperty}>{t("properties.list.add")}</Button>
                         )}
                     </div>
                 </CardHeader>
                 {properties.length === 0 ? (
                     <CardContent>
                         <div className="flex flex-col items-center justify-center py-6">
-                            <h2 className="text-lg font-semibold text-gray-700">No properties found</h2>
-                            <p className="mt-1 text-sm text-gray-500">Start by adding a new property.</p>
-                            <Button variant="outline" className="mt-3" onClick={navigateToAddProperty}>Add Property</Button>
+                            <h2 className="text-lg font-semibold text-gray-700">{t("properties.list.emptyTitle")}</h2>
+                            <p className="mt-1 text-sm text-gray-500">{t("properties.list.emptyDescription")}</p>
+                            <Button variant="outline" className="mt-3" onClick={navigateToAddProperty}>{t("properties.list.add")}</Button>
                         </div>
                     </CardContent>
                 ) : (
@@ -51,13 +53,13 @@ export const PropertiesList = () => {
                             <Table>
                                 <TableHeader className="bg-gray-100">
                                     <TableRow>
-                                        <TableHead className="text-center font-semibold">PROPERTY</TableHead>
-                                        <TableHead className="text-center font-semibold">TENANT</TableHead>
-                                        <TableHead className="text-center font-semibold">MANAGER</TableHead>
-                                        <TableHead className="text-center font-semibold">RENT</TableHead>
-                                        <TableHead className="text-center font-semibold">MORTGAGE</TableHead>
-                                        <TableHead className="text-center font-semibold">INSURANCE</TableHead>
-                                        <TableHead className="text-center font-semibold">CONTRACT</TableHead>
+                                        <TableHead className="text-center font-semibold">{t("properties.list.columns.property")}</TableHead>
+                                        <TableHead className="text-center font-semibold">{t("properties.list.columns.tenant")}</TableHead>
+                                        <TableHead className="text-center font-semibold">{t("properties.list.columns.manager")}</TableHead>
+                                        <TableHead className="text-center font-semibold">{t("properties.list.columns.rent")}</TableHead>
+                                        <TableHead className="text-center font-semibold">{t("properties.list.columns.mortgage")}</TableHead>
+                                        <TableHead className="text-center font-semibold">{t("properties.list.columns.insurance")}</TableHead>
+                                        <TableHead className="text-center font-semibold">{t("properties.list.columns.contract")}</TableHead>
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody className="text-blue-950">
@@ -71,8 +73,8 @@ export const PropertiesList = () => {
                                                     ) : null}
                                                 </div>
                                             </TableCell>
-                                            <TableCell className="text-center">{property.tenants?.[0]?.full_name ?? "Not assigned"}</TableCell>
-                                            <TableCell className="text-center">{property.manager?.name ?? "Not assigned"}</TableCell>
+                                            <TableCell className="text-center">{property.tenants?.[0]?.full_name ?? t("common.notAssigned")}</TableCell>
+                                            <TableCell className="text-center">{property.manager?.name ?? t("common.notAssigned")}</TableCell>
                                             <TableCell className="text-center">{property.rent}€</TableCell>
                                             <TableCell className="text-center">{property.mortgage}€</TableCell>
                                             <TableCell className="text-center">
@@ -88,10 +90,10 @@ export const PropertiesList = () => {
                                                             }}}
                                                         >
                                                         <Eye className="mr-2 h-4 w-4" />
-                                                        View Insurance
+                                                        {t("properties.list.viewInsurance")}
                                                     </Button>
                                                 ) : (
-                                                    "No insurance assigned"
+                                                    t("properties.list.noInsurance")
                                                 )}
                                             </TableCell>
                                             <TableCell className="text-center text-blue-950">
@@ -107,10 +109,10 @@ export const PropertiesList = () => {
                                                             }}}
                                                         >
                                                         <ReceiptText className=" mr-2 h-4 w-4" />
-                                                        View Contract
+                                                        {t("properties.list.viewContract")}
                                                     </Button>
                                                 ) : (
-                                                    "No contract assigned"
+                                                    t("properties.list.noContract")
                                                 )}
                                             </TableCell>
                                         </TableRow>

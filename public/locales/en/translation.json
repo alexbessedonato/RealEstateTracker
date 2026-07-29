@@ -1,0 +1,353 @@
+{
+  "meta": {
+    "title": "Rentaly - Manage your rental properties",
+    "description": "Dashboard for independent landlords. Manage your properties, tenants, and contracts in one place.",
+    "ogTitle": "Rentaly",
+    "ogDescription": "Dashboard for independent landlords. Manage your properties, tenants, and contracts in one place."
+  },
+  "common": {
+    "loading": "Loading",
+    "loadingEllipsis": "Loading...",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "deleting": "Deleting...",
+    "close": "Close",
+    "unexpectedError": "Unexpected error",
+    "notAssigned": "Not assigned",
+    "empty": "-",
+    "email": "Email",
+    "phone": "Phone",
+    "name": "Name",
+    "saving": "Saving...",
+    "saveChanges": "Save changes",
+    "adding": "Adding...",
+    "placeholders": {
+      "email": "email@example.com",
+      "phone": "phone number"
+    },
+    "validation": {
+      "emailInvalid": "Invalid email",
+      "minPassword": "Minimum 6 characters",
+      "passwordMismatch": "Passwords do not match",
+      "phoneInvalid": "Invalid phone (e.g. +34600123456 or 600123456)"
+    }
+  },
+  "layout": {
+    "logoAlt": "Rentaly Logo",
+    "searchPlaceholder": "Search Property",
+    "nav": {
+      "login": "Login",
+      "signUp": "Sign Up",
+      "logout": "Logout",
+      "loggingOut": "Logging out..."
+    }
+  },
+  "landing": {
+    "hero": {
+      "badge": "Property management, simplified",
+      "title": "Your whole portfolio,",
+      "titleAccent": "clearly organized",
+      "subtitle": "Rentaly brings properties, tenants, managers, and finances into a single dashboard — so you always know what you own, who's renting, and how much you're earning.",
+      "ctaPrimary": "Get started free",
+      "ctaSecondary": "Sign in",
+      "highlights": {
+        "rentTracking": "Rent & mortgage tracking",
+        "documents": "Secure document storage",
+        "people": "Tenants & managers in one place"
+      }
+    },
+    "features": {
+      "title": "Everything you need to run your portfolio",
+      "subtitle": "A focused toolkit for independent landlords and small portfolio owners — without the complexity of enterprise software.",
+      "items": {
+        "financials": {
+          "title": "Financial overview",
+          "description": "Total rent, total mortgage, and net income calculated automatically across every property."
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Track names, addresses, rent, and mortgage for each property you own."
+        },
+        "documents": {
+          "title": "Document storage",
+          "description": "Keep insurance policies and contracts attached to each property, secured behind signed links."
+        },
+        "tenants": {
+          "title": "Tenants",
+          "description": "Store tenant details and link them directly to the properties they rent."
+        },
+        "managers": {
+          "title": "Managers",
+          "description": "Assign property managers with company and contact details for quick reference."
+        }
+      }
+    },
+    "howItWorks": {
+      "title": "Up and running in three steps",
+      "subtitle": "No setup headaches — just add what you own and let the dashboard do the math.",
+      "steps": {
+        "addProperties": {
+          "title": "Add your properties",
+          "description": "Enter each property with its rent, mortgage, and address, then attach insurance and contract documents."
+        },
+        "linkPeople": {
+          "title": "Link tenants & managers",
+          "description": "Assign tenants to the properties they rent and connect the managers responsible for each one."
+        },
+        "trackFinances": {
+          "title": "Track your finances",
+          "description": "Your dashboard rolls everything up into total rent, mortgage, and net income at a glance."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to take control of your properties?",
+      "subtitle": "Create your account and start building a clearer picture of your real estate portfolio today.",
+      "primary": "Create your account",
+      "secondary": "Sign in",
+      "footnote": "No credit card required."
+    },
+    "footer": {
+      "brand": "Rentaly",
+      "copyright": "© {{year}} Rentaly. All rights reserved."
+    },
+    "preview": {
+      "summary": {
+        "totalRent": "Total Rent",
+        "totalMortgage": "Total Mortgage",
+        "netIncome": "Net Income"
+      },
+      "properties": {
+        "title": "Properties",
+        "action": "Add Property",
+        "columns": {
+          "property": "Property",
+          "tenant": "Tenant",
+          "rent": "Rent",
+          "mortgage": "Mortgage",
+          "docs": "Docs"
+        }
+      },
+      "managers": {
+        "title": "Managers",
+        "action": "Add Manager",
+        "columns": {
+          "name": "Name",
+          "company": "Company",
+          "email": "Email",
+          "phone": "Phone"
+        }
+      },
+      "tenants": {
+        "title": "Tenants",
+        "action": "Add Tenant",
+        "columns": {
+          "name": "Name",
+          "property": "Property",
+          "email": "Email",
+          "phone": "Phone"
+        }
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "description": "Enter your details to sign in.",
+      "passwordLabel": "Password",
+      "submitting": "Signing in...",
+      "submit": "Sign in",
+      "forgotPassword": "Forgot Password?"
+    },
+    "signUp": {
+      "title": "Create Account",
+      "description": "Join to start managing your properties.",
+      "fullNameLabel": "Full Name",
+      "passwordLabel": "Password",
+      "confirmPasswordLabel": "Confirm Password",
+      "submitting": "Creating account...",
+      "submit": "Sign up",
+      "placeholders": {
+        "fullName": "John Doe",
+        "email": "you@email.com"
+      },
+      "validation": {
+        "fullNameRequired": "Name is required"
+      }
+    },
+    "passwordReset": {
+      "title": "Reset Password",
+      "description": "Enter your email and we'll send you a link to reset your password.",
+      "submitting": "Sending...",
+      "submit": "Send link"
+    },
+    "newPassword": {
+      "title": "New Password",
+      "description": "Enter your new password.",
+      "passwordLabel": "New Password",
+      "confirmPasswordLabel": "Confirm Password",
+      "submit": "Save password"
+    },
+    "toasts": {
+      "loginSuccess": "Logged in successfully",
+      "loginError": "Error signing in",
+      "signUpSuccess": "Account created successfully.",
+      "signUpError": "Error creating account",
+      "logoutSuccess": "Logged out successfully",
+      "logoutError": "Error signing out",
+      "passwordResetSuccess": "Password reset email sent, check your inbox",
+      "passwordResetError": "Error resetting password",
+      "passwordUpdateSuccess": "Password updated successfully",
+      "passwordUpdateError": "Error updating password"
+    }
+  },
+  "properties": {
+    "list": {
+      "title": "Properties",
+      "updatedOn": "updated on: {{time}}",
+      "add": "Add Property",
+      "emptyTitle": "No properties found",
+      "emptyDescription": "Start by adding a new property.",
+      "viewInsurance": "View Insurance",
+      "noInsurance": "No insurance assigned",
+      "viewContract": "View Contract",
+      "noContract": "No contract assigned",
+      "columns": {
+        "property": "PROPERTY",
+        "tenant": "TENANT",
+        "manager": "MANAGER",
+        "rent": "RENT",
+        "mortgage": "MORTGAGE",
+        "insurance": "INSURANCE",
+        "contract": "CONTRACT"
+      }
+    },
+    "add": {
+      "title": "Add Property",
+      "description": "Enter the details of the new property.",
+      "submit": "Add Property"
+    },
+    "edit": {
+      "title": "Edit Property",
+      "description": "Update the property details.",
+      "delete": "Delete Property",
+      "deleteDialogTitle": "Delete Property",
+      "deleteConfirm": "Are you sure you want to delete this property?"
+    },
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "property name",
+      "addressLabel": "Address",
+      "addressPlaceholder": "property address",
+      "rentLabel": "Rent",
+      "rentPlaceholder": "rent",
+      "mortgageLabel": "Mortgage",
+      "mortgagePlaceholder": "mortgage",
+      "insuranceLabel": "Insurance policy (PDF or Image)",
+      "contractLabel": "Rental contract (PDF or Image)",
+      "fileSelected": "Selected: {{fileName}}",
+      "keepCurrentFile": "Leave empty to keep the current file.",
+      "managerLabel": "Manager (Optional)",
+      "managerPlaceholder": "Select a manager",
+      "noManager": "No manager"
+    },
+    "toasts": {
+      "deleteSuccess": "Property deleted successfully",
+      "deleteError": "Error deleting property",
+      "updateSuccess": "Property updated successfully",
+      "updateError": "Error updating property",
+      "addSuccess": "Property added successfully",
+      "addError": "Error adding property",
+      "signedUrlError": "Error getting signed URL"
+    }
+  },
+  "tenants": {
+    "list": {
+      "title": "Tenants",
+      "add": "Add Tenant",
+      "emptyTitle": "No tenants found",
+      "emptyDescription": "Start by adding a new tenant.",
+      "columns": {
+        "name": "NAME",
+        "property": "PROPERTY",
+        "email": "EMAIL",
+        "phone": "PHONE"
+      }
+    },
+    "add": {
+      "title": "Add Tenant",
+      "description": "Enter the details of the new tenant.",
+      "submit": "Add Tenant"
+    },
+    "edit": {
+      "title": "Edit Tenant",
+      "description": "Update the tenant details.",
+      "delete": "Delete Tenant",
+      "deleteDialogTitle": "Delete Tenant",
+      "deleteConfirm": "Are you sure you want to delete \"{{name}}\"?",
+      "deleteConfirmUnlink": " They will be unlinked from the property \"{{property}}\"."
+    },
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "tenant name",
+      "propertyLabel": "Property (Optional)",
+      "propertyPlaceholder": "Select a property",
+      "noProperty": "No property"
+    },
+    "toasts": {
+      "addSuccess": "Tenant added successfully",
+      "addError": "Error adding tenant",
+      "updateSuccess": "Tenant updated successfully",
+      "updateError": "Error updating tenant",
+      "deleteSuccess": "Tenant deleted successfully",
+      "deleteError": "Error deleting tenant"
+    }
+  },
+  "managers": {
+    "list": {
+      "title": "Managers",
+      "add": "Add Manager",
+      "emptyTitle": "No managers found",
+      "emptyDescription": "Start by adding a new manager.",
+      "columns": {
+        "name": "NAME",
+        "company": "COMPANY",
+        "email": "EMAIL",
+        "phone": "PHONE"
+      }
+    },
+    "add": {
+      "title": "Add Manager",
+      "description": "Enter the details of the new manager.",
+      "submit": "Add Manager"
+    },
+    "edit": {
+      "title": "Edit Manager",
+      "description": "Update the manager details.",
+      "delete": "Delete Manager",
+      "deleteDialogTitle": "Delete Manager",
+      "deleteConfirm": "Are you sure you want to delete \"{{name}}\"? Assigned properties will be left without a manager."
+    },
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "manager name",
+      "companyLabel": "Company",
+      "companyPlaceholder": "company name",
+      "emailPlaceholder": "email address"
+    },
+    "toasts": {
+      "addSuccess": "Manager added successfully",
+      "addError": "Error adding manager",
+      "updateSuccess": "Manager updated successfully",
+      "updateError": "Error updating manager",
+      "deleteSuccess": "Manager deleted successfully",
+      "deleteError": "Error deleting manager"
+    }
+  },
+  "financials": {
+    "totalRent": "Total Rent",
+    "totalMortgage": "Total Mortgage",
+    "netIncome": "Net Income",
+    "loadError": "Error loading financial data."
+  }
+}

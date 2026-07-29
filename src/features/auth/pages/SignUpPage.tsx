@@ -1,5 +1,6 @@
 import { useForm } from "@tanstack/react-form";
 import { useNavigate } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -15,6 +16,7 @@ import { useDismissDialog } from "@/hooks/useDismissDialog";
 import { useSignUpMutation } from "../hooks/mutations";
 
 export function SignUpPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dismissDialog = useDismissDialog("/");
   const navigateToDashboard = () => navigate({ to: "/dashboard", replace: true });
@@ -38,10 +40,10 @@ export function SignUpPage() {
       <DialogContent className="sm:max-w-sm backdrop-blur-md bg-white/90">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center">
-            Crear Cuenta
+            {t('auth.signUp.title')}
           </DialogTitle>
           <DialogDescription className="text-center">
-            Únete para empezar a gestionar tus propiedades.
+            {t('auth.signUp.description')}
           </DialogDescription>
         </DialogHeader>
 
@@ -57,17 +59,17 @@ export function SignUpPage() {
             name="fullName"
             validators={{
               onChange: ({ value }) =>
-                !value ? "El nombre es obligatorio" : undefined,
+                !value ? t('auth.signUp.validation.fullNameRequired') : undefined,
             }}
             children={(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Nombre Completo</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t('auth.signUp.fullNameLabel')}</FieldLabel>
                 <Input
                   id={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="Juan Pérez"
+                  placeholder={t('auth.signUp.placeholders.fullName')}
                 />
                 {field.state.meta.errors.length > 0 && (
                   <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
@@ -80,17 +82,17 @@ export function SignUpPage() {
             name="email"
             validators={{
               onChange: ({ value }) =>
-                !value.includes("@") ? "Email inválido" : undefined,
+                !value.includes("@") ? t('common.validation.emailInvalid') : undefined,
             }}
             children={(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t('common.email')}</FieldLabel>
                 <Input
                   id={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="tu@email.com"
+                  placeholder={t('auth.signUp.placeholders.email')}
                 />
                 {field.state.meta.errors.length > 0 && (
                   <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
@@ -103,11 +105,11 @@ export function SignUpPage() {
             name="password"
             validators={{
               onChange: ({ value }) =>
-                value.length < 6 ? "Mínimo 6 caracteres" : undefined,
+                value.length < 6 ? t('common.validation.minPassword') : undefined,
             }}
             children={(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Contraseña</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t('auth.signUp.passwordLabel')}</FieldLabel>
                 <Input
                   id={field.name}
                   type="password"
@@ -127,14 +129,14 @@ export function SignUpPage() {
             validators={{
               onChange: ({ value, fieldApi }) => {
                 if (value !== fieldApi.form.getFieldValue("password")) {
-                  return "Las contraseñas no coinciden";
+                  return t('common.validation.passwordMismatch');
                 }
                 return undefined;
               },
             }}
             children={(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Confirmar Contraseña</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t('auth.signUp.confirmPasswordLabel')}</FieldLabel>
                 <Input
                   id={field.name}
                   type="password"
@@ -156,8 +158,8 @@ export function SignUpPage() {
               disabled={form.state.isSubmitting || signUp.isPending}
             >
               {form.state.isSubmitting || signUp.isPending
-                ? "Creando cuenta..."
-                : "Registrarse"}
+                ? t('auth.signUp.submitting')
+                : t('auth.signUp.submit')}
             </Button>
           </DialogFooter>
         </form>

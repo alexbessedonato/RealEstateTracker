@@ -13,8 +13,10 @@ import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
 import { useDismissDialog } from "@/hooks/useDismissDialog";
 import { useAddManagerMutation } from "../hooks/queries";
+import { useTranslation } from "react-i18next";
 
 export const AddManagerPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dismissDialog = useDismissDialog();
   const navigateToDashboard = () => navigate({ to: "/dashboard", replace: true });
@@ -38,10 +40,10 @@ export const AddManagerPage = () => {
       <DialogContent className="sm:max-w-sm backdrop-blur-md bg-white/90">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center">
-            Add Manager
+            {t("managers.add.title")}
           </DialogTitle>
           <DialogDescription className="text-center">
-            Introduce los datos del nuevo manager.
+            {t("managers.add.description")}
           </DialogDescription>
         </DialogHeader>
 
@@ -56,13 +58,13 @@ export const AddManagerPage = () => {
           <form.Field name="name">
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Nombre</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("managers.form.nameLabel")}</FieldLabel>
                 <Input
                   id={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="nombre del manager"
+                  placeholder={t("managers.form.namePlaceholder")}
                 />
               </Field>
             )}
@@ -71,13 +73,13 @@ export const AddManagerPage = () => {
           <form.Field name="company">
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Empresa</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("managers.form.companyLabel")}</FieldLabel>
                 <Input
                   id={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="nombre de la empresa"
+                  placeholder={t("managers.form.companyPlaceholder")}
                 />
               </Field>
             )}
@@ -87,18 +89,18 @@ export const AddManagerPage = () => {
             name="email"
             validators={{
               onChange: ({ value }) =>
-                !value.includes("@") ? "Email inválido" : undefined,
+                !value.includes("@") ? t("common.validation.emailInvalid") : undefined,
             }}
           >
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("common.email")}</FieldLabel>
                 <Input
                   id={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="correo electrónico"
+                  placeholder={t("managers.form.emailPlaceholder")}
                 />
                 {field.state.meta.errors.length > 0 && (
                   <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
@@ -114,21 +116,21 @@ export const AddManagerPage = () => {
                 if (!value) return undefined;
                 const isValid = /^\+?\d{9,15}$/.test(value);
                 return !isValid
-                  ? "Teléfono inválido (ej: +34600123456 o 600123456)"
+                  ? t("common.validation.phoneInvalid")
                   : undefined;
               },
             }}
           >
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Teléfono</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("common.phone")}</FieldLabel>
                 <Input
                   id={field.name}
                   type="tel"
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="número de teléfono"
+                  placeholder={t("common.placeholders.phone")}
                 />
                 {field.state.meta.errors.length > 0 && (
                   <FieldError>{field.state.meta.errors.join(", ")}</FieldError>
@@ -144,8 +146,8 @@ export const AddManagerPage = () => {
               disabled={form.state.isSubmitting || addManager.isPending}
             >
               {form.state.isSubmitting || addManager.isPending
-                ? "Añadiendo..."
-                : "Añadir Manager"}
+                ? t("common.adding")
+                : t("managers.add.submit")}
             </Button>
           </DialogFooter>
         </form>

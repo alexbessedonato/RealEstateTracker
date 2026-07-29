@@ -1,33 +1,10 @@
 import { Eye, FileText } from "lucide-react";
-
-const properties = [
-  {
-    name: "Passeig de Gràcia",
-    tenant: "Marc Soler",
-    manager: "Finques Diagonal",
-    rent: "2.100€",
-    mortgage: "1.200€",
-  },
-  {
-    name: "Carrer de Balmes",
-    tenant: "Laia Ferrer",
-    manager: "Gestió Barna SL",
-    rent: "1.450€",
-    mortgage: "800€",
-  },
-  {
-    name: "Avinguda Diagonal",
-    tenant: "Pol Ramos",
-    manager: "Not assigned",
-    rent: "1.750€",
-    mortgage: "950€",
-  },
-] as const;
+import { useTranslation } from "react-i18next";
 
 const summaryCards = [
-  { label: "Total Rent", value: "5.300 €", accent: "text-blue-950" },
-  { label: "Total Mortgage", value: "2.950 €", accent: "text-blue-950" },
-  { label: "Net Income", value: "2.350 €", accent: "text-emerald-600" },
+  { labelKey: "landing.preview.summary.totalRent", value: "5.300 €", accent: "text-blue-950" },
+  { labelKey: "landing.preview.summary.totalMortgage", value: "2.950 €", accent: "text-blue-950" },
+  { labelKey: "landing.preview.summary.netIncome", value: "2.350 €", accent: "text-emerald-600" },
 ] as const;
 
 const managers = [
@@ -81,17 +58,46 @@ const SectionCard = ({
 );
 
 export const DashboardPreview = () => {
+  const { t } = useTranslation();
+
+  const properties = [
+    {
+      name: "Passeig de Gràcia",
+      tenant: "Marc Soler",
+      manager: "Finques Diagonal",
+      rent: "2.100€",
+      mortgage: "1.200€",
+    },
+    {
+      name: "Carrer de Balmes",
+      tenant: "Laia Ferrer",
+      manager: "Gestió Barna SL",
+      rent: "1.450€",
+      mortgage: "800€",
+    },
+    {
+      name: "Avinguda Diagonal",
+      tenant: "Pol Ramos",
+      manager: t("common.notAssigned"),
+      rent: "1.750€",
+      mortgage: "950€",
+    },
+  ] as const;
+
   return (
     <div className="w-full rounded-2xl bg-slate-100 p-3 shadow-2xl shadow-blue-950/10 ring-1 ring-slate-200/80">
       <div className="flex flex-col gap-3">
-        <SectionCard title="Properties" action="Add Property">
+        <SectionCard
+          title={t("landing.preview.properties.title")}
+          action={t("landing.preview.properties.action")}
+        >
           <div className="overflow-hidden rounded-md ring-1 ring-slate-200/70">
             <div className="grid grid-cols-[1.3fr_1fr_1fr_1fr_0.7fr] gap-2 bg-slate-50 px-2.5 py-1.5 text-[8px] font-semibold tracking-wide text-muted-foreground uppercase">
-              <span className="min-w-0 truncate">Property</span>
-              <span className="min-w-0 truncate">Tenant</span>
-              <span className="min-w-0 truncate text-center">Rent</span>
-              <span className="min-w-0 truncate text-center">Mortgage</span>
-              <span className="text-right">Docs</span>
+              <span className="min-w-0 truncate">{t("landing.preview.properties.columns.property")}</span>
+              <span className="min-w-0 truncate">{t("landing.preview.properties.columns.tenant")}</span>
+              <span className="min-w-0 truncate text-center">{t("landing.preview.properties.columns.rent")}</span>
+              <span className="min-w-0 truncate text-center">{t("landing.preview.properties.columns.mortgage")}</span>
+              <span className="text-right">{t("landing.preview.properties.columns.docs")}</span>
             </div>
             {properties.map((property, index) => (
               <div
@@ -124,11 +130,11 @@ export const DashboardPreview = () => {
         <div className="grid grid-cols-3 gap-3">
           {summaryCards.map((card) => (
             <div
-              key={card.label}
+              key={card.labelKey}
               className="rounded-lg bg-white p-2.5 ring-1 ring-slate-200/70"
             >
               <p className="truncate text-[9px] font-medium text-muted-foreground">
-                {card.label}
+                {t(card.labelKey)}
               </p>
               <p className={`mt-1 text-sm font-semibold ${card.accent}`}>
                 {card.value}
@@ -137,13 +143,16 @@ export const DashboardPreview = () => {
           ))}
         </div>
 
-        <SectionCard title="Managers" action="Add Manager">
+        <SectionCard
+          title={t("landing.preview.managers.title")}
+          action={t("landing.preview.managers.action")}
+        >
           <div className="overflow-hidden rounded-md ring-1 ring-slate-200/70">
             <div className="grid grid-cols-[1fr_1fr_1.4fr_0.9fr] gap-2 bg-slate-50 px-2.5 py-1.5 text-[8px] font-semibold tracking-wide text-muted-foreground uppercase">
-              <span className="min-w-0 truncate">Name</span>
-              <span className="min-w-0 truncate">Company</span>
-              <span className="min-w-0 truncate">Email</span>
-              <span className="text-right">Phone</span>
+              <span className="min-w-0 truncate">{t("landing.preview.managers.columns.name")}</span>
+              <span className="min-w-0 truncate">{t("landing.preview.managers.columns.company")}</span>
+              <span className="min-w-0 truncate">{t("landing.preview.managers.columns.email")}</span>
+              <span className="text-right">{t("landing.preview.managers.columns.phone")}</span>
             </div>
             {managers.map((manager, index) => (
               <div
@@ -169,13 +178,16 @@ export const DashboardPreview = () => {
           </div>
         </SectionCard>
 
-        <SectionCard title="Tenants" action="Add Tenant">
+        <SectionCard
+          title={t("landing.preview.tenants.title")}
+          action={t("landing.preview.tenants.action")}
+        >
           <div className="overflow-hidden rounded-md ring-1 ring-slate-200/70">
             <div className="grid grid-cols-[1fr_1fr_1.4fr_0.9fr] gap-2 bg-slate-50 px-2.5 py-1.5 text-[8px] font-semibold tracking-wide text-muted-foreground uppercase">
-              <span className="min-w-0 truncate">Name</span>
-              <span className="min-w-0 truncate">Property</span>
-              <span className="min-w-0 truncate">Email</span>
-              <span className="text-right">Phone</span>
+              <span className="min-w-0 truncate">{t("landing.preview.tenants.columns.name")}</span>
+              <span className="min-w-0 truncate">{t("landing.preview.tenants.columns.property")}</span>
+              <span className="min-w-0 truncate">{t("landing.preview.tenants.columns.email")}</span>
+              <span className="text-right">{t("landing.preview.tenants.columns.phone")}</span>
             </div>
             {tenants.map((tenant, index) => (
               <div

@@ -1,16 +1,18 @@
 import { useNavigate } from "@tanstack/react-router";
 import { ArrowRight, Building2, CheckCircle2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { DashboardPreview } from "./DashboardPreview";
 
 const highlights = [
-  "Rent & mortgage tracking",
-  "Secure document storage",
-  "Tenants & managers in one place",
+  "landing.hero.highlights.rentTracking",
+  "landing.hero.highlights.documents",
+  "landing.hero.highlights.people",
 ] as const;
 
 export const HeroSection = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <section className="relative overflow-hidden border-b border-slate-200/70 bg-gradient-to-b from-white via-slate-50 to-slate-100">
@@ -22,18 +24,16 @@ export const HeroSection = () => {
         <div className="flex flex-col items-start text-left lg:sticky lg:top-24">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-950/10 bg-white px-4 py-1.5 text-sm font-medium text-blue-950 shadow-sm">
             <Building2 className="size-4" />
-            Property management, simplified
+            {t("landing.hero.badge")}
           </div>
 
           <h1 className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-            Your whole portfolio,
-            <span className="block text-blue-950">clearly organized</span>
+            {t("landing.hero.title")}
+            <span className="block text-blue-950">{t("landing.hero.titleAccent")}</span>
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
-            Rentaly brings properties, tenants, managers, and finances
-            into a single dashboard — so you always know what you own, who's
-            renting, and how much you're earning.
+            {t("landing.hero.subtitle")}
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -42,7 +42,7 @@ export const HeroSection = () => {
               className="h-11 bg-blue-950 px-6 text-white hover:bg-blue-900"
               onClick={() => navigate({ to: "/signup" })}
             >
-              Get started free
+              {t("landing.hero.ctaPrimary")}
               <ArrowRight className="ml-1 size-4" />
             </Button>
             <Button
@@ -51,7 +51,7 @@ export const HeroSection = () => {
               className="h-11 px-6"
               onClick={() => navigate({ to: "/login" })}
             >
-              Sign in
+              {t("landing.hero.ctaSecondary")}
             </Button>
           </div>
 
@@ -62,7 +62,7 @@ export const HeroSection = () => {
                 className="flex items-center gap-2 text-sm text-slate-600"
               >
                 <CheckCircle2 className="size-4 text-emerald-500" />
-                {item}
+                {t(item)}
               </li>
             ))}
           </ul>

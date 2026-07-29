@@ -1,5 +1,6 @@
 import { useForm } from "@tanstack/react-form";
 import { useNavigate } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 import { Input } from "@/components/ui/input";
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import { Button } from "@/components/ui/button";
@@ -23,6 +24,7 @@ import {
 } from "@/components/ui/select";
 
 export const AddPropertyPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dismissDialog = useDismissDialog();
   const navigateToDashboard = () => navigate({ to: "/dashboard", replace: true });
@@ -56,10 +58,10 @@ export const AddPropertyPage = () => {
       <DialogContent className="sm:max-w-sm backdrop-blur-md bg-white/90">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center">
-            Add Property
+            {t("properties.add.title")}
           </DialogTitle>
           <DialogDescription className="text-center">
-            Introduce los datos de la nueva propiedad.
+            {t("properties.add.description")}
           </DialogDescription>
         </DialogHeader>
 
@@ -74,13 +76,13 @@ export const AddPropertyPage = () => {
           <form.Field name="name">
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Nombre</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("properties.form.nameLabel")}</FieldLabel>
                 <Input
                   id={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="nombre de la propiedad"
+                  placeholder={t("properties.form.namePlaceholder")}
                 />
               </Field>
             )}
@@ -89,13 +91,13 @@ export const AddPropertyPage = () => {
           <form.Field name="address">
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Dirección</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("properties.form.addressLabel")}</FieldLabel>
                 <Input
                   id={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder="dirección de la propiedad"
+                  placeholder={t("properties.form.addressPlaceholder")}
                 />
               </Field>
             )}
@@ -104,14 +106,14 @@ export const AddPropertyPage = () => {
           <form.Field name="rent">
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>rent</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("properties.form.rentLabel")}</FieldLabel>
                 <Input
                   id={field.name}
                   type="number"
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.valueAsNumber)}
-                  placeholder="renta"
+                  placeholder={t("properties.form.rentPlaceholder")}
                 />
               </Field>
             )}
@@ -120,14 +122,14 @@ export const AddPropertyPage = () => {
           <form.Field name="mortgage">
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>mortgage</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("properties.form.mortgageLabel")}</FieldLabel>
                 <Input
                   id={field.name}
                   type="number"
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.valueAsNumber)}
-                  placeholder="hipoteca"
+                  placeholder={t("properties.form.mortgagePlaceholder")}
                 />
               </Field>
             )}
@@ -137,7 +139,7 @@ export const AddPropertyPage = () => {
             {(field) => (
               <Field>
                 <FieldLabel htmlFor={field.name}>
-                  Póliza de seguro (PDF o Imagen)
+                  {t("properties.form.insuranceLabel")}
                 </FieldLabel>
                 <Input
                   id={field.name}
@@ -151,7 +153,7 @@ export const AddPropertyPage = () => {
                 />
                 {field.state.value instanceof File && (
                   <FieldDescription>
-                    Seleccionado: {field.state.value.name}
+                    {t("properties.form.fileSelected", { fileName: field.state.value.name })}
                   </FieldDescription>
                 )}
               </Field>
@@ -162,7 +164,7 @@ export const AddPropertyPage = () => {
             {(field) => (
               <Field>
                 <FieldLabel htmlFor={field.name}>
-                  Contrato de alquiler (PDF o Imagen)
+                  {t("properties.form.contractLabel")}
                 </FieldLabel>
                 <Input
                   id={field.name}
@@ -176,7 +178,7 @@ export const AddPropertyPage = () => {
                 />
                 {field.state.value instanceof File && (
                   <FieldDescription>
-                    Seleccionado: {field.state.value.name}
+                    {t("properties.form.fileSelected", { fileName: field.state.value.name })}
                   </FieldDescription>
                 )}
               </Field>
@@ -186,16 +188,16 @@ export const AddPropertyPage = () => {
           <form.Field name="manager_id">
             {(field) => (
               <Field>
-                <FieldLabel htmlFor={field.name}>Manager (Opcional)</FieldLabel>
+                <FieldLabel htmlFor={field.name}>{t("properties.form.managerLabel")}</FieldLabel>
                 <Select
                   value={field.state.value}
                   onValueChange={field.handleChange}
                 >
                   <SelectTrigger id={field.name}>
-                    <SelectValue placeholder="Selecciona un manager" />
+                    <SelectValue placeholder={t("properties.form.managerPlaceholder")} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="none">Sin manager</SelectItem>
+                    <SelectItem value="none">{t("properties.form.noManager")}</SelectItem>
 
                     {managers.map((manager) => (
                       <SelectItem key={manager.id} value={manager.id}>
@@ -216,8 +218,8 @@ export const AddPropertyPage = () => {
               disabled={form.state.isSubmitting || addProperty.isPending}
             >
               {form.state.isSubmitting || addProperty.isPending
-                ? "Añadiendo..."
-                : "Añadir Propiedad"}
+                ? t("common.adding")
+                : t("properties.add.submit")}
             </Button>
           </DialogFooter>
         </form>
