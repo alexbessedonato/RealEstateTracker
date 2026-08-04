@@ -246,6 +246,8 @@
       "insuranceLabel": "Versicherungspolice (PDF oder Bild)",
       "contractLabel": "Mietvertrag (PDF oder Bild)",
       "fileSelected": "Ausgewählt: {{fileName}}",
+      "dropzonePrompt": "Datei hierher ziehen oder klicken zum Auswählen",
+      "dropzoneActive": "Datei hier ablegen",
       "keepCurrentFile": "Leer lassen, um die aktuelle Datei beizubehalten.",
       "managerLabel": "Verwalter (optional)",
       "managerPlaceholder": "Verwalter auswählen",

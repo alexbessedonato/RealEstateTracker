@@ -246,6 +246,8 @@
       "insuranceLabel": "Insurance policy (PDF or Image)",
       "contractLabel": "Rental contract (PDF or Image)",
       "fileSelected": "Selected: {{fileName}}",
+      "dropzonePrompt": "Drag & drop a file here, or click to select",
+      "dropzoneActive": "Drop the file here",
       "keepCurrentFile": "Leave empty to keep the current file.",
       "managerLabel": "Manager (Optional)",
       "managerPlaceholder": "Select a manager",

@@ -6,9 +6,22 @@ import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import { useManagersQuery } from "@/features/managers/hooks/queries";
 import { useDismissDialog } from "@/hooks/useDismissDialog";
-import { useDeletePropertyMutation, useEditPropertyMutation, usePropertiesQuery } from "../hooks/queries";
+import {
+  useDeletePropertyMutation,
+  useEditPropertyMutation,
+  usePropertiesQuery,
+} from "../hooks/queries";
 import { editPropertyRoute } from "@/routes/router";
- 
+import { FileCodeIcon, XIcon } from "lucide-react";
+import {
+  Attachment,
+  AttachmentAction,
+  AttachmentActions,
+  AttachmentContent,
+  AttachmentDescription,
+  AttachmentMedia,
+  AttachmentTitle,
+} from "@/components/ui/attachment";
 import {
   Dialog,
   DialogContent,
@@ -26,21 +39,22 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 import { GenericAlertDialog } from "@/components/layout/GenericAlertDialog";
+import { Separator } from "@/components/ui/separator";
 
 export const EditPropertyPage = () => {
-    const { t } = useTranslation();
-    const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const { t } = useTranslation();
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
-  
-    const navigate = useNavigate();
-    const dismissDialog = useDismissDialog();
-    const navigateToDashboard = () => navigate({ to: "/dashboard", replace: true });
-    const { propertyId } = editPropertyRoute.useParams();
-    const { data: properties = [] } = usePropertiesQuery();
-    const property = properties.find((property) => property.id === propertyId);
-    const { data: managers = [] } = useManagersQuery();
-    const editProperty = useEditPropertyMutation();
-    const deleteProperty = useDeletePropertyMutation();
+  const navigate = useNavigate();
+  const dismissDialog = useDismissDialog();
+  const navigateToDashboard = () =>
+    navigate({ to: "/dashboard", replace: true });
+  const { propertyId } = editPropertyRoute.useParams();
+  const { data: properties = [] } = usePropertiesQuery();
+  const property = properties.find((property) => property.id === propertyId);
+  const { data: managers = [] } = useManagersQuery();
+  const editProperty = useEditPropertyMutation();
+  const deleteProperty = useDeletePropertyMutation();
 
   const form = useForm({
     defaultValues: {
@@ -76,203 +90,284 @@ export const EditPropertyPage = () => {
 
   return (
     <>
-    <Dialog open={true} onOpenChange={(open) => !open && dismissDialog()}>
-      <DialogContent className="sm:max-w-sm backdrop-blur-md bg-white/90">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center">
-            {t("properties.edit.title")}
-          </DialogTitle>
-          <DialogDescription className="text-center">
-            {t("properties.edit.description")}
-          </DialogDescription>
-        </DialogHeader>
+      <Dialog open={true} onOpenChange={(open) => !open && dismissDialog()}>
+        <DialogContent className="sm:max-w-3xl backdrop-blur-md bg-white/90">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-center">
+              {t("properties.edit.title")}
+            </DialogTitle>
+            <DialogDescription className="text-center">
+              {t("properties.edit.description")}
+            </DialogDescription>
+          </DialogHeader>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            form.handleSubmit();
-          }}
-          className="flex flex-col gap-4"
-        >
-          <form.Field name="name">
-            {(field) => (
-              <Field>
-                <FieldLabel htmlFor={field.name}>{t("properties.form.nameLabel")}</FieldLabel>
-                <Input
-                  id={field.name}
-                  value={field.state.value}
-                  onBlur={field.handleBlur}
-                  onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder={t("properties.form.namePlaceholder")}
-                />
-              </Field>
-            )}
-          </form.Field>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              form.handleSubmit();
+            }}
+            className="flex flex-col gap-4"
+          >
+            <div className="flex items-stretch gap-4">
+              <div className="flex min-w-0 flex-1 flex-col gap-3">
+                <form.Field name="name">
+                  {(field) => (
+                    <Field>
+                      <FieldLabel htmlFor={field.name}>
+                        {t("properties.form.nameLabel")}
+                      </FieldLabel>
+                      <Input
+                        id={field.name}
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => field.handleChange(e.target.value)}
+                        placeholder={t("properties.form.namePlaceholder")}
+                      />
+                    </Field>
+                  )}
+                </form.Field>
 
-          <form.Field name="address">
-            {(field) => (
-              <Field>
-                <FieldLabel htmlFor={field.name}>{t("properties.form.addressLabel")}</FieldLabel>
-                <Input
-                  id={field.name}
-                  value={field.state.value}
-                  onBlur={field.handleBlur}
-                  onChange={(e) => field.handleChange(e.target.value)}
-                  placeholder={t("properties.form.addressPlaceholder")}
-                />
-              </Field>
-            )}
-          </form.Field>
+                <form.Field name="address">
+                  {(field) => (
+                    <Field>
+                      <FieldLabel htmlFor={field.name}>
+                        {t("properties.form.addressLabel")}
+                      </FieldLabel>
+                      <Input
+                        id={field.name}
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => field.handleChange(e.target.value)}
+                        placeholder={t("properties.form.addressPlaceholder")}
+                      />
+                    </Field>
+                  )}
+                </form.Field>
 
-          <form.Field name="rent">
-            {(field) => (
-              <Field>
-                <FieldLabel htmlFor={field.name}>{t("properties.form.rentLabel")}</FieldLabel>
-                <Input
-                  id={field.name}
-                  type="number"
-                  value={field.state.value}
-                  onBlur={field.handleBlur}
-                  onChange={(e) => field.handleChange(e.target.valueAsNumber)}
-                  placeholder={t("properties.form.rentPlaceholder")}
-                />
-              </Field>
-            )}
-          </form.Field>
+                <div className="flex gap-2">
+                  <form.Field name="rent">
+                    {(field) => (
+                      <Field>
+                        <FieldLabel htmlFor={field.name}>
+                          {t("properties.form.rentLabel")}
+                        </FieldLabel>
+                        <Input
+                          id={field.name}
+                          type="number"
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={(e) =>
+                            field.handleChange(e.target.valueAsNumber)
+                          }
+                          placeholder={t("properties.form.rentPlaceholder")}
+                        />
+                      </Field>
+                    )}
+                  </form.Field>
 
-          <form.Field name="mortgage">
-            {(field) => (
-              <Field>
-                <FieldLabel htmlFor={field.name}>{t("properties.form.mortgageLabel")}</FieldLabel>
-                <Input
-                  id={field.name}
-                  type="number"
-                  value={field.state.value}
-                  onBlur={field.handleBlur}
-                  onChange={(e) => field.handleChange(e.target.valueAsNumber)}
-                  placeholder={t("properties.form.mortgagePlaceholder")}
-                />
-              </Field>
-            )}
-          </form.Field>
+                  <form.Field name="mortgage">
+                    {(field) => (
+                      <Field>
+                        <FieldLabel htmlFor={field.name}>
+                          {t("properties.form.mortgageLabel")}
+                        </FieldLabel>
+                        <Input
+                          id={field.name}
+                          type="number"
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={(e) =>
+                            field.handleChange(e.target.valueAsNumber)
+                          }
+                          placeholder={t("properties.form.mortgagePlaceholder")}
+                        />
+                      </Field>
+                    )}
+                  </form.Field>
+                </div>
 
-          <form.Field name="insurance_file">
-            {(field) => (
-              <Field>
-                <FieldLabel htmlFor={field.name}>
-                  {t("properties.form.insuranceLabel")}
-                </FieldLabel>
-                <FieldDescription>
-                  {t("properties.form.keepCurrentFile")}
-                </FieldDescription>
-                <Input
-                  id={field.name}
-                  type="file"
-                  accept=".pdf,.jpg,.jpeg,.png"
-                  onBlur={field.handleBlur}
-                  onChange={(e) => {
-                    const file = e.target.files?.[0] || null;
-                    field.handleChange(file);
-                  }}
-                />
-              </Field>
-            )}
-          </form.Field>
+                <form.Field name="manager_id">
+                  {(field) => (
+                    <Field>
+                      <FieldLabel htmlFor={field.name}>
+                        {t("properties.form.managerLabel")}
+                      </FieldLabel>
+                      <Select
+                        value={field.state.value}
+                        onValueChange={field.handleChange}
+                      >
+                        <SelectTrigger id={field.name}>
+                          <SelectValue
+                            placeholder={t(
+                              "properties.form.managerPlaceholder",
+                            )}
+                          />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="none">
+                            {t("properties.form.noManager")}
+                          </SelectItem>
 
-          <form.Field name="contract_file">
-            {(field) => (
-              <Field>
-                <FieldLabel htmlFor={field.name}>
-                  {t("properties.form.contractLabel")}
-                </FieldLabel>
-                <FieldDescription>
-                  {t("properties.form.keepCurrentFile")}
-                </FieldDescription>
-                <Input
-                  id={field.name}
-                  type="file"
-                  accept=".pdf,.jpg,.jpeg,.png"
-                  onBlur={field.handleBlur}
-                  onChange={(e) => {
-                    const file = e.target.files?.[0] || null;
-                    field.handleChange(file);
-                  }}
-                />
-              </Field>
-            )}
-          </form.Field>
+                          {managers.map((manager) => (
+                            <SelectItem key={manager.id} value={manager.id}>
+                              {manager.name}{" "}
+                              {manager.company ? `(${manager.company})` : ""}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </Field>
+                  )}
+                </form.Field>
+              </div>
 
-          <form.Field name="manager_id">
-            {(field) => (
-              <Field>
-                <FieldLabel htmlFor={field.name}>{t("properties.form.managerLabel")}</FieldLabel>
-                <Select
-                  value={field.state.value}
-                  onValueChange={field.handleChange}
-                >
-                  <SelectTrigger id={field.name}>
-                    <SelectValue placeholder={t("properties.form.managerPlaceholder")} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="none">{t("properties.form.noManager")}</SelectItem>
+              <Separator orientation="vertical" className="self-stretch" />
 
-                    {managers.map((manager) => (
-                      <SelectItem key={manager.id} value={manager.id}>
-                        {manager.name}{" "}
-                        {manager.company ? `(${manager.company})` : ""}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </Field>
-            )}
-          </form.Field>
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-col gap-5">
+                  <form.Field name="insurance_file">
+                    {(field) => (
+                      <Field>
+                        <FieldLabel htmlFor={field.name}>
+                          {t("properties.form.insuranceLabel")}
+                        </FieldLabel>
+                        <FieldDescription>
+                          {t("properties.form.keepCurrentFile")}
+                        </FieldDescription>
+                        {field.state.value ? (
+                          <Attachment className="w-full mt-1">
+                            <AttachmentMedia>
+                              <FileCodeIcon />
+                            </AttachmentMedia>
+                            <AttachmentContent>
+                              <AttachmentTitle>
+                                {field.state.value.name}
+                              </AttachmentTitle>
+                              <AttachmentDescription>
+                                {field.state.value.type || "file"} ·{" "}
+                                {Math.round(field.state.value.size / 1024)} KB
+                              </AttachmentDescription>
+                            </AttachmentContent>
+                            <AttachmentActions>
+                              <AttachmentAction
+                                type="button"
+                                aria-label={`Remove ${field.state.value.name}`}
+                                onClick={() => field.handleChange(null)}
+                              >
+                                <XIcon />
+                              </AttachmentAction>
+                            </AttachmentActions>
+                          </Attachment>
+                        ) : (
+                          <Input
+                            id={field.name}
+                            type="file"
+                            accept=".pdf,.jpg,.jpeg,.png"
+                            onBlur={field.handleBlur}
+                            onChange={(e) => {
+                              const file = e.target.files?.[0] || null;
+                              field.handleChange(file);
+                            }}
+                          />
+                        )}
+                      </Field>
+                    )}
+                  </form.Field>
 
-          <DialogFooter className="pt-4">
-            <Button
-              type="submit"
-              className="w-full"
-              disabled={
-                form.state.isSubmitting ||
-                editProperty.isPending
-              }
-            >
-              {form.state.isSubmitting || editProperty.isPending
-                ? t("common.saving")
-                : t("common.saveChanges")}
-            </Button>
-          </DialogFooter>
+                  <form.Field name="contract_file">
+                    {(field) => (
+                      <Field>
+                        <FieldLabel htmlFor={field.name}>
+                          {t("properties.form.contractLabel")}
+                        </FieldLabel>
+                        <FieldDescription>
+                          {t("properties.form.keepCurrentFile")}
+                        </FieldDescription>
+                        {field.state.value ? (
+                          <Attachment className="w-full mt-1">
+                            <AttachmentMedia>
+                              <FileCodeIcon />
+                            </AttachmentMedia>
+                            <AttachmentContent>
+                              <AttachmentTitle>
+                                {field.state.value.name}
+                              </AttachmentTitle>
+                              <AttachmentDescription>
+                                {field.state.value.type || "file"} ·{" "}
+                                {Math.round(field.state.value.size / 1024)} KB
+                              </AttachmentDescription>
+                            </AttachmentContent>
+                            <AttachmentActions>
+                              <AttachmentAction
+                                type="button"
+                                aria-label={`Remove ${field.state.value.name}`}
+                                onClick={() => field.handleChange(null)}
+                              >
+                                <XIcon />
+                              </AttachmentAction>
+                            </AttachmentActions>
+                          </Attachment>
+                        ) : (
+                          <Input
+                            id={field.name}
+                            type="file"
+                            accept=".pdf,.jpg,.jpeg,.png"
+                            onBlur={field.handleBlur}
+                            onChange={(e) => {
+                              const file = e.target.files?.[0] || null;
+                              field.handleChange(file);
+                            }}
+                          />
+                        )}
+                      </Field>
+                    )}
+                  </form.Field>
+                </div>
+              </div>
+            </div>
 
-          <DialogFooter className="pt-4">
-            <Button
-              type="button"
-              variant="destructive"
-              className="w-full"
-              onClick={() => setShowDeleteDialog(true)}
-              disabled={deleteProperty.isPending}
-            >
-              {t("properties.edit.delete")}
-            </Button>
-          </DialogFooter>
-        </form>
-      </DialogContent>
-    </Dialog>
+            <DialogFooter className="pt-4">
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={form.state.isSubmitting || editProperty.isPending}
+              >
+                {form.state.isSubmitting || editProperty.isPending
+                  ? t("common.saving")
+                  : t("common.saveChanges")}
+              </Button>
+            </DialogFooter>
 
-    <GenericAlertDialog
-      open={showDeleteDialog}
-      onOpenChange={(open) => {
-        if (!deleteProperty.isPending) setShowDeleteDialog(open);
-      }}
-      isPending={deleteProperty.isPending}
-      title={t("properties.edit.deleteDialogTitle")}
-      description={t("properties.edit.deleteConfirm")}
-      onConfirm={async () => {
-        await deleteProperty.mutateAsync(propertyId);
-        navigateToDashboard();
-      }}
-      onCancel={() => setShowDeleteDialog(false)}
-    />
+            <DialogFooter className="pt-4">
+              <Button
+                type="button"
+                variant="destructive"
+                className="w-full"
+                onClick={() => setShowDeleteDialog(true)}
+                disabled={deleteProperty.isPending}
+              >
+                {t("properties.edit.delete")}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+
+      <GenericAlertDialog
+        open={showDeleteDialog}
+        onOpenChange={(open) => {
+          if (!deleteProperty.isPending) setShowDeleteDialog(open);
+        }}
+        isPending={deleteProperty.isPending}
+        title={t("properties.edit.deleteDialogTitle")}
+        description={t("properties.edit.deleteConfirm")}
+        onConfirm={async () => {
+          await deleteProperty.mutateAsync(propertyId);
+          navigateToDashboard();
+        }}
+        onCancel={() => setShowDeleteDialog(false)}
+      />
     </>
   );
 };

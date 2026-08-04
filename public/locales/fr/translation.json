@@ -246,6 +246,8 @@
       "insuranceLabel": "Police d'assurance (PDF ou image)",
       "contractLabel": "Contrat de location (PDF ou image)",
       "fileSelected": "Sélectionné : {{fileName}}",
+      "dropzonePrompt": "Glissez-déposez un fichier ici, ou cliquez pour sélectionner",
+      "dropzoneActive": "Déposez le fichier ici",
       "keepCurrentFile": "Laissez vide pour conserver le fichier actuel.",
       "managerLabel": "Gestionnaire (facultatif)",
       "managerPlaceholder": "Sélectionnez un gestionnaire",

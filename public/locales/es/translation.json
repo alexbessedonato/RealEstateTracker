@@ -246,6 +246,8 @@
       "insuranceLabel": "Póliza de seguro (PDF o imagen)",
       "contractLabel": "Contrato de alquiler (PDF o imagen)",
       "fileSelected": "Seleccionado: {{fileName}}",
+      "dropzonePrompt": "Arrastra y suelta un archivo aquí, o haz clic para seleccionar",
+      "dropzoneActive": "Suelta el archivo aquí",
       "keepCurrentFile": "Deja vacío si deseas mantener el archivo actual.",
       "managerLabel": "Manager (opcional)",
       "managerPlaceholder": "Selecciona un manager",
