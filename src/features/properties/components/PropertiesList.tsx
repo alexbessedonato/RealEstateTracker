@@ -18,10 +18,10 @@ import type { PropertyForTable } from "../types"
 export const PropertiesList = () => {
     const { t } = useTranslation();
     const { properties, handleOpenFile } = usePropertiesList();
-
     const navigate = useNavigate();
     const navigateToAddProperty = () => navigate({ to: "/add-property" });
     const navigateToEditProperty = (property: PropertyForTable) => navigate({ to: "/edit-property/$propertyId", params: { propertyId: property.id }});
+    const navigateToPropertyDetail = (property: PropertyForTable) => navigate({ to: "/property-detail/$propertyId", params: {propertyId: property.id}})
 
     return (
         <Card className="w-full">
@@ -66,7 +66,7 @@ export const PropertiesList = () => {
                                         <TableRow key={property.name} onClick={() => {
                                             const selection = window.getSelection();
                                             if (selection && selection.toString().length > 0) return
-                                            navigateToEditProperty(property)}
+                                            navigateToPropertyDetail(property)}
                                         }
                                         >
                                             <TableCell className="text-center">

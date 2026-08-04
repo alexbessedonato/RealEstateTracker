@@ -19,6 +19,7 @@ import { getAuthStatus } from "@/features/auth/store/authStore";
 import { supabase } from "@/lib/supabaseClient";
 import { PasswordResetPage } from "@/features/auth/pages/PasswordResetPage";
 import { NewPasswordPage } from "@/features/auth/pages/NewPasswordPage";
+import { PropertyDetail } from "@/features/properties/pages/PropertyDetail";
 
 export const rootRoute = createRootRoute({
   component: MainLayout,
@@ -150,6 +151,17 @@ export const newPasswordRoute = createRoute({
   component: NewPasswordPage
 })
 
+export const propertyDetailRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/property-detail/$propertyId",
+  component: PropertyDetail,
+  beforeLoad: () => {
+    if (getAuthStatus() === "unauthenticated") {
+      throw redirect({ to: "/login" , replace: true });
+    }
+  },
+})
+
 const routeTree = rootRoute.addChildren([
   dashboardRoute,
   homeRoute,
@@ -162,7 +174,8 @@ const routeTree = rootRoute.addChildren([
   editManagerRoute,
   editTenantRoute,
   passwordResetRoute,
-  newPasswordRoute
+  newPasswordRoute,
+  propertyDetailRoute
 ]);
 
 export const router = createRouter({ routeTree });
