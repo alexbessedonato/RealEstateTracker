@@ -12,7 +12,9 @@ Logged-out visitors see a marketing landing page. Authenticated users get a dash
 - **Financial overview** — total rent, total mortgage, and net income across the portfolio (via Supabase RPC)
 - **Managers** — add, edit, and delete property managers with company and contact details; deleting a manager unlinks their properties
 - **Tenants** — add, edit, and delete tenants and link them to properties; deleting a tenant unlinks them from their property
-- **Authentication** — email login, sign-up, and logout with session-aware UI and route guards (protected routes redirect to `/login`; login/signup redirect to `/dashboard` when already authenticated)
+- **Authentication** — email login, sign-up, logout, and password recovery with session-aware UI
+- **Route guards** — TanStack Router `beforeLoad` checks against the `$auth` nanostore: protected routes redirect to `/login`, and login/signup/password-reset redirect to `/dashboard` when already authenticated
+- **Row Level Security** — Supabase RLS policies restrict table access so authenticated users can only read/write their own rows (ownership via `user_id` / `owner_id`)
 
 ## Tech Stack
 
@@ -87,11 +89,32 @@ features/{name}/
 - `pages/` holds cross-feature shells (dashboard, landing) — not feature logic
 - Route guards live in `routes/router.ts` using `beforeLoad` + `throw redirect()` against the `$auth` nanostore
 - Data writes are scoped per user: properties use `user_id`; managers and tenants use `owner_id`
+- Client route guards are not the security boundary — Supabase RLS enforces ownership on the database
+
+### Row Level Security
+
+RLS is enabled on the Supabase tables. Authenticated users only access rows they own. Example policy on `public.property`:
+
+```sql
+alter policy "[ALL] access for [authenticated] based on [user_id]"
+on "public"."property"
+to authenticated
+using (
+  (auth.uid() = user_id)
+)
+with check (
+  (auth.uid() = user_id)
+);
+```
+
+Managers and tenants follow the same idea with `owner_id` instead of `user_id`. Frontend filters and route guards improve UX; RLS is what actually prevents cross-user data access.
 
 ### Technical highlights
 
 Worth calling out in portfolio reviews or interviews:
 
+- **Route guards** — every protected route uses TanStack Router `beforeLoad` + `throw redirect()` keyed off `$auth` status, so unauthenticated users never reach the dashboard or CRUD screens; auth pages bounce signed-in users to `/dashboard`
+- **Row Level Security** — Postgres policies (`auth.uid() = user_id` / `owner_id`) enforce per-user isolation on the database; the SPA never relies on “hide other people’s rows in the UI” as the only protection
 - **Server-side financials via RPC** — portfolio totals (rent, mortgage, net) come from a Supabase Postgres function (`get_user_financials`) instead of summing rows on the client, so aggregation stays authoritative and cheap to call from the dashboard
 - **Relational selects** — property list queries use nested PostgREST selects (manager + tenants in one round trip) via typed select constants, avoiding N+1 fetches for the table view
 - **Document uploads** — property insurance and contracts go to Supabase Storage with path helpers, short-lived signed URLs for viewing, and cleanup when files are replaced or properties are deleted
@@ -186,13 +209,6 @@ This is a Vite SPA, deploy to Vercel (or any static host) with the environment v
 - **Redirect URLs** → same URL + `http://localhost:5173`
 
 After pushing to `main`, Vercel auto-deploys. Confirm the latest deployment commit matches your local `main` branch.
-
-## Roadmap
-
-- Role-based access control via Supabase RLS policies
-- Query `enabled` guards tied to auth status across all features
-- Property detail page and portfolio search
-- Integration and end-to-end tests for key flows
 
 ## License
 
