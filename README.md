@@ -88,6 +88,20 @@ features/{name}/
 - Route guards live in `routes/router.ts` using `beforeLoad` + `throw redirect()` against the `$auth` nanostore
 - Data writes are scoped per user: properties use `user_id`; managers and tenants use `owner_id`
 
+### Technical highlights
+
+Worth calling out in portfolio reviews or interviews:
+
+- **Server-side financials via RPC** — portfolio totals (rent, mortgage, net) come from a Supabase Postgres function (`get_user_financials`) instead of summing rows on the client, so aggregation stays authoritative and cheap to call from the dashboard
+- **Relational selects** — property list queries use nested PostgREST selects (manager + tenants in one round trip) via typed select constants, avoiding N+1 fetches for the table view
+- **Document uploads** — property insurance and contracts go to Supabase Storage with path helpers, short-lived signed URLs for viewing, and cleanup when files are replaced or properties are deleted
+- **Referential cleanup on delete** — deleting a manager or property unlinks related rows (`manager_id` / tenant links) before remove, so the UI never shows orphaned associations
+- **Cross-domain cache invalidation** — mutating a property, manager, or tenant invalidates related React Query caches (e.g. property writes also refresh financials and tenants) so the dashboard stays consistent without ad-hoc refetches; logout clears the query cache with `removeQueries`
+- **Auth session sync** — Supabase `onAuthStateChange` keeps a Nanostore (`$auth`) in sync; TanStack Router `beforeLoad` guards and query `enabled` flags both read from that store so UI, routing, and data fetching share one auth source of truth
+- **Password recovery flow** — reset email → redirect to `/confirm-new-password` → `updateUser` password change, with field-level confirmation validation
+- **i18n** — `i18next` with HTTP-loaded locales (en/es/fr/de), browser language detection, and toast/form copy driven from translation files rather than hardcoded strings
+- **Feature-sliced layout** — each domain owns `api` / `hooks` / `pages` / `components` so Supabase I/O stays pure, React Query stays next to the feature, and route screens stay thin — easier to extend than a flat `components/` + `services/` dump
+
 ## Routes
 
 | Path | Screen | Auth |
